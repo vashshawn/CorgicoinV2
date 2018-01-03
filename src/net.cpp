@@ -542,11 +542,6 @@ void CNode::CloseSocketDisconnect()
     }
 }
 
-void CNode::Cleanup()
-{
-}
-
-
 void CNode::PushVersion()
 {
     /// when NTP implemented, change to just nTime = GetAdjustedTime()
