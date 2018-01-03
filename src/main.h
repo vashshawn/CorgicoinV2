@@ -49,10 +49,6 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20
 
 static const int64_t COIN_YEAR_REWARD = 10 * CENT; // 10% per year
 
-// Hardfork set for March 1 2017 00:00:00 UTC
-static const unsigned int FORK_TIME = 1488326400;
-
-
 static const uint256 hashGenesisBlock("0x000006b8477694ab6299540be64a83feaa7749eb12071a810d2b273d0ac3cc76");
 static const uint256 hashGenesisBlockTestNet("0xadee450bef1018cd5755145185cc5d5b3b4d6c488c6c15013711393b8918b212");
 
