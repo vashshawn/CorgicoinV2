@@ -316,7 +316,7 @@ bool IsStandardTx(const CTransaction& tx)
         return false;
     }
     // nTime has different purpose from nLockTime but can be used in similar attacks
-    if (tx.nTime > FutureDrift(GetAdjustedTime())) {
+    if (tx.nTime > FutureDrift(GetAdjustedTime(), nBestHeight + 1)) {
         return false;
     }
 
