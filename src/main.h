@@ -517,6 +517,11 @@ public:
     }
 
     /** Check for standard transaction types
+        @return True if all outputs (scriptPubKeys) use only standard transaction forms
+    */
+    bool IsStandard() const;
+
+    /** Check for standard transaction types
         @param[in] mapInputs	Map of previous transactions that have outputs we're spending
         @return True if all inputs (scriptSigs) use only standard transaction forms
         @see CTransaction::FetchInputs
