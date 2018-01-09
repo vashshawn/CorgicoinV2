@@ -24,7 +24,6 @@ class CNode;
 class CBlockIndex;
 extern int nBestHeight;
 
-
 /** Time between pings automatically sent out for latency probing and keepalive (in seconds). */
 static const int PING_INTERVAL = 2 * 60;
 /** Time after which to disconnect, after waiting for a ping response (or inactivity). */
@@ -243,7 +242,6 @@ public:
     uint64_t nSendBytes;
     uint64_t nRecvBytes;
 
-    int64_t nLastSendEmpty;
     int64_t nTimeConnected;
     CAddress addr;
     std::string addrName;
@@ -308,7 +306,6 @@ public:
         nLastRecv = 0;
         nSendBytes = 0;
         nRecvBytes = 0;
-        nLastSendEmpty = GetTime();
         nTimeConnected = GetTime();
         addr = addrIn;
         addrName = addrNameIn == "" ? addr.ToStringIPPort() : addrNameIn;
