@@ -24,6 +24,7 @@ class CNode;
 class CBlockIndex;
 extern int nBestHeight;
 
+
 /** Time between pings automatically sent out for latency probing and keepalive (in seconds). */
 static const int PING_INTERVAL = 2 * 60;
 /** Time after which to disconnect, after waiting for a ping response (or inactivity). */
@@ -52,6 +53,7 @@ enum
     LOCAL_IF,     // address a local interface listens on
     LOCAL_BIND,   // address explicit bound to
     LOCAL_UPNP,   // address reported by UPnP
+    LOCAL_IRC,    // address reported by IRC (deprecated)
     LOCAL_HTTP,   // address reported by whatismyip.com and similar
     LOCAL_MANUAL, // address explicitly specified (-externalip=)
 
@@ -128,8 +130,7 @@ extern std::deque<std::pair<int64_t, CInv> > vRelayExpiration;
 extern CCriticalSection cs_mapRelay;
 extern std::map<CInv, int64_t> mapAlreadyAskedFor;
 
-extern std::vector<std::string> vAddedNodes;
-extern CCriticalSection cs_vAddedNodes;
+
 
 
 class CNodeStats
@@ -242,6 +243,7 @@ public:
     uint64_t nSendBytes;
     uint64_t nRecvBytes;
 
+    int64_t nLastSendEmpty;
     int64_t nTimeConnected;
     CAddress addr;
     std::string addrName;
@@ -306,6 +308,7 @@ public:
         nLastRecv = 0;
         nSendBytes = 0;
         nRecvBytes = 0;
+        nLastSendEmpty = GetTime();
         nTimeConnected = GetTime();
         addr = addrIn;
         addrName = addrNameIn == "" ? addr.ToStringIPPort() : addrNameIn;
@@ -722,6 +725,8 @@ public:
     void Subscribe(unsigned int nChannel, unsigned int nHops=0);
     void CancelSubscribe(unsigned int nChannel);
     void CloseSocketDisconnect();
+    void Cleanup();
+
 
     // Denial-of-service detection/prevention
     // The idea is to detect peers that are behaving

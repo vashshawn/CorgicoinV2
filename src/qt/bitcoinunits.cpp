@@ -34,9 +34,9 @@ QString BitcoinUnits::name(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("CORG");
-    case mBTC: return QString("mCORG");
-    case uBTC: return QString::fromUtf8("μCORG");
+    case BTC: return QString("VADE");
+    case mBTC: return QString("mVADE");
+    case uBTC: return QString::fromUtf8("μVADE");
     default: return QString("???");
     }
 }
@@ -45,9 +45,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("corgicoins");
-    case mBTC: return QString("Milli-corgicoins (1 / 1,000)");
-    case uBTC: return QString("Micro-corgicoins (1 / 1,000,000)");
+    case BTC: return QString("VADE");
+    case mBTC: return QString("Milli-VADE (1 / 1,000)");
+    case uBTC: return QString("Micro-VADE (1 / 1,000,000)");
     default: return QString("???");
     }
 }

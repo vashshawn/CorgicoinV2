@@ -56,6 +56,8 @@ void OptionsModel::Init()
         SoftSetArg("-proxy", settings.value("addrProxy").toString().toStdString());
     if (settings.contains("nSocksVersion") && settings.value("fUseProxy").toBool())
         SoftSetArg("-socks", settings.value("nSocksVersion").toString().toStdString());
+    if (settings.contains("detachDB"))
+        SoftSetBoolArg("-detachdb", settings.value("detachDB").toBool());
     if (!language.isEmpty())
         SoftSetArg("-lang", language.toStdString());
 }
@@ -250,12 +252,7 @@ int OptionsModel::getDisplayUnit()
 {
     return nDisplayUnit;
 }
-/*
-int OptionsModel::updateTheme()
-{
-    return nTheme;
-}
-*/
+
 bool OptionsModel::getDisplayAddresses()
 {
     return bDisplayAddresses;

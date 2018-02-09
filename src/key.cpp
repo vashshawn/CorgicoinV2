@@ -448,118 +448,13 @@ bool CKey::SetCompactSignature(uint256 hash, const std::vector<unsigned char>& v
     return false;
 }
 
-static bool ParseLength(
-        const std::vector<unsigned char>::iterator& begin,
-        const std::vector<unsigned char>::iterator& end,
-        size_t& nLengthRet,
-        size_t& nLengthSizeRet)
+bool CKey::Verify(uint256 hash, const std::vector<unsigned char>& vchSig)
 {
-    std::vector<unsigned char>::iterator it = begin;
-    if (it == end)
-        return false;
-
-    nLengthRet = *it;
-    nLengthSizeRet = 1;
-
-    if (!(nLengthRet & 0x80))
-        return true;
-
-    unsigned char nLengthBytes = nLengthRet & 0x7f;
-
-    nLengthRet = 0;
-    for (unsigned char i = 0; i < nLengthBytes; i++)
-    {
-        it++;
-        if (it == end)
-            return false;
-        nLengthRet = (nLengthRet << 8) | *it;
-        if (nLengthRet > 0x7f)
-            return false;
-        nLengthSizeRet++;
-    }
-    return true;
-}
-
-static bool NormalizeSignature(std::vector<unsigned char>& vchSig)
-{
-    // Prevent the problem described here: https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2015-July/009697.html
-    // by removing the extra length bytes
-    if (vchSig.size() < 2 || vchSig[0] != 0x30)
-        return false;
-
-    size_t nTotalLength, nTotalLengthSize;
-    if (!ParseLength(vchSig.begin() + 1, vchSig.end(), nTotalLength, nTotalLengthSize))
-        return false;
-
-    size_t nRStart = 1 + nTotalLengthSize;
-    if (vchSig.size() < nRStart + 2 || vchSig[nRStart] != 0x02)
-        return false;
-
-    size_t nRLength, nRLengthSize;
-    if (!ParseLength(vchSig.begin() + nRStart + 1, vchSig.end(), nRLength, nRLengthSize))
-        return false;
-    const size_t nRDataStart = nRStart + 1 + nRLengthSize;
-    std::vector<unsigned char> R(vchSig.begin() + nRDataStart, vchSig.begin() + nRDataStart + nRLength);
-
-    size_t nSStart = nRStart + 1 + nRLengthSize + nRLength;
-    if (vchSig.size() < nSStart + 2 || vchSig[nSStart] != 0x02)
-        return false;
-
-    size_t nSLength, nSLengthSize;
-    if (!ParseLength(vchSig.begin() + nSStart + 1, vchSig.end(), nSLength, nSLengthSize))
-        return false;
-    const size_t nSDataStart = nSStart + 1 + nSLengthSize;
-    std::vector<unsigned char> S(vchSig.begin() + nSDataStart, vchSig.begin() + nSDataStart + nSLength);
-
-    vchSig.clear();
-    vchSig.reserve(2 + 2 + R.size() + 2 + S.size());
-    vchSig.push_back(0x30);
-    vchSig.push_back(2 + R.size() + 2 + S.size());
-    vchSig.push_back(0x02);
-    vchSig.push_back(R.size());
-    vchSig.insert(vchSig.end(), R.begin(), R.end());
-    vchSig.push_back(0x02);
-    vchSig.push_back(S.size());
-    vchSig.insert(vchSig.end(), S.begin(), S.end());
-
-    return true;
-}
-
-bool CKey::Verify(uint256 hash, const std::vector<unsigned char>& vchSigParam)
-{
-    std::vector<unsigned char> vchSig(vchSigParam.begin(), vchSigParam.end());
-
-    if (!NormalizeSignature(vchSig))
-        return false;
-
-    if (vchSig.empty())
-        return false;
-
-    // New versions of OpenSSL will reject non-canonical DER signatures. de/re-serialize first.
-    unsigned char *norm_der = NULL;
-    ECDSA_SIG *norm_sig = ECDSA_SIG_new();
-    const unsigned char* sigptr = &vchSig[0];
-    assert(norm_sig);
-    if (d2i_ECDSA_SIG(&norm_sig, &sigptr, vchSig.size()) == NULL)
-    {
-        /* As of OpenSSL 1.0.0p d2i_ECDSA_SIG frees and nulls the pointer on
-         * error. But OpenSSL's own use of this function redundantly frees the
-         * result. As ECDSA_SIG_free(NULL) is a no-op, and in the absence of a
-         * clear contract for the function behaving the same way is more
-         * conservative.
-         */
-        ECDSA_SIG_free(norm_sig);
-        return false;
-    }
-    int derlen = i2d_ECDSA_SIG(norm_sig, &norm_der);
-    ECDSA_SIG_free(norm_sig);
-    if (derlen <= 0)
-        return false;
-
     // -1 = error, 0 = bad sig, 1 = good
-    bool ret = ECDSA_verify(0, (unsigned char*)&hash, sizeof(hash), norm_der, derlen, pkey) == 1;
-    OPENSSL_free(norm_der);
-    return ret;
+    if (ECDSA_verify(0, (unsigned char*)&hash, sizeof(hash), &vchSig[0], vchSig.size(), pkey) != 1)
+        return false;
+
+        return true;
 }
 
 bool CKey::VerifyCompact(uint256 hash, const std::vector<unsigned char>& vchSig)
