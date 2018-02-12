@@ -129,6 +129,7 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->transactionFee, OptionsModel::Fee);
     mapper->addMapping(ui->reserveBalance, OptionsModel::ReserveBalance);
     mapper->addMapping(ui->bitcoinAtStartup, OptionsModel::StartAtStartup);
+    mapper->addMapping(ui->detachDatabases, OptionsModel::DetachDatabases);
 
     /* Network */
     mapper->addMapping(ui->mapPortUpnp, OptionsModel::MapPortUPnP);
@@ -200,7 +201,7 @@ void OptionsDialog::showRestartWarning_Proxy()
 {
     if(!fRestartWarningDisplayed_Proxy)
     {
-        QMessageBox::warning(this, tr("Warning"), tr("This setting will take effect after restarting corgicoin."), QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Warning"), tr("This setting will take effect after restarting VADE."), QMessageBox::Ok);
         fRestartWarningDisplayed_Proxy = true;
     }
 }
@@ -209,7 +210,7 @@ void OptionsDialog::showRestartWarning_Lang()
 {
     if(!fRestartWarningDisplayed_Lang)
     {
-        QMessageBox::warning(this, tr("Warning"), tr("This setting will take effect after restarting corgicoin."), QMessageBox::Ok);
+        QMessageBox::warning(this, tr("Warning"), tr("This setting will take effect after restarting VADE."), QMessageBox::Ok);
         fRestartWarningDisplayed_Lang = true;
     }
 }
@@ -222,31 +223,6 @@ void OptionsDialog::updateDisplayUnit()
         ui->transactionFee->setDisplayUnit(model->getDisplayUnit());
     }
 }
-
-/*
-void OptionsDialog::updateTheme()
-{
-    //connect(comboBoxThemes, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTheme()));
-
-
-    QFile f(":qdarkstyle/style.qss");
-    if (f.exists())
-    {
-        f.open(QFile::ReadOnly | QFile::Text);
-        QTextStream ts(&f);
-        qApp->setStyleSheet(ts.readAll());
-    }
-
-    QFile f(":qlightstyle/style.qss");
-    if (f.exists())
-    {
-        f.open(QFile::ReadOnly | QFile::Text);
-        QTextStream ts(&f);
-        qApp->setStyleSheet(ts.readAll());
-    }
-
-}
-*/
 
 void OptionsDialog::handleProxyIpValid(QValidatedLineEdit *object, bool fState)
 {

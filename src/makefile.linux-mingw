@@ -5,32 +5,28 @@
 TARGET_PLATFORM:=i686
 #TARGET_PLATFORM:=x86_64
 
-DEPSDIR:=/mnt/mxe/usr/$(TARGET_PLATFORM)-w64-mingw32.static
-HOST:=$(TARGET_PLATFORM)-w64-mingw32
-INCDIR:=$(DEPSDIR)/include
-LIBDIR:=$(DEPSDIR)/lib
-AR:=$(TARGET_PLATFORM)-w64-mingw32.static-ar
-CC:=$(TARGET_PLATFORM)-w64-mingw32.static-gcc
-CXX:=$(TARGET_PLATFORM)-w64-mingw32.static-g++
-RANLIB=$(TARGET_PLATFORM)-w64-mingw32.static-ranlib
-STRIP=$(TARGET_PLATFORM)-w64-mingw32.static-strip
+DEPSDIR:=/usr/$(TARGET_PLATFORM)-w64-mingw32
+CC:=$(TARGET_PLATFORM)-w64-mingw32-gcc
+CXX:=$(TARGET_PLATFORM)-w64-mingw32-g++
+RANLIB=$(TARGET_PLATFORM)-w64-mingw32-ranlib
+STRIP=$(TARGET_PLATFORM)-w64-mingw32-strip
 
 USE_UPNP:=0
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
- -I"$(INCDIR)/boost" \
- -I"$(INCDIR)/openssl/include" \
- -I"$(INCDIR)/miniupnpc" \
- -I"$(INCDIR)"
+ -I"$(DEPSDIR)/boost_1_55_0" \
+ -I"$(DEPSDIR)/db-6.0.20/build_unix" \
+ -I"$(DEPSDIR)/openssl-1.0.1f/include" \
+ -I"$(DEPSDIR)"
 
 LIBPATHS= \
- -L"$(LIBDIR)"
+ -L"$(DEPSDIR)/boost_1_55_0/stage/lib" \
+ -L"$(DEPSDIR)/db-6.0.20/build_unix" \
+ -L"$(DEPSDIR)/openssl-1.0.1f"
 
 LIBS= \
- -static-libgcc \
- -static-libstdc++ \
  -l boost_system-mt \
  -l boost_filesystem-mt \
  -l boost_program_options-mt \
@@ -71,8 +67,8 @@ OBJS= \
     obj/db.o \
     obj/init.o \
     obj/keystore.o \
-    obj/miner.o \
     obj/main.o \
+    obj/miner.o \
     obj/net.o \
     obj/protocol.o \
     obj/bitcoinrpc.o \
@@ -82,7 +78,6 @@ OBJS= \
     obj/rpcwallet.o \
     obj/rpcblockchain.o \
     obj/rpcrawtransaction.o \
-    obj/rpcsmessage.o \
     obj/script.o \
     obj/sync.o \
     obj/util.o \
@@ -93,11 +88,9 @@ OBJS= \
     obj/pbkdf2.o \
     obj/scrypt.o \
     obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o \
-    obj/smessage.o \
-    obj/stealth.o
+    obj/scrypt-x86_64.o
 
-all: corgicoind.exe
+all: VADEd.exe
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += -I"$(CURDIR)/leveldb/include"
@@ -115,9 +108,12 @@ DEFS += -DHAVE_BUILD_INFO
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
-corgicoind.exe: $(OBJS:obj/%=obj/%)
+obj/zerocoin/%.o: zerocoin/%.cpp $(HEADERS)
+	$(CXX) -c $(CFLAGS) -o $@ $<
+
+VADEd.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
-	$(STRIP) corgicoind.exe
+	$(STRIP) VADEd.exe
 
 obj/scrypt-x86.o: scrypt-x86.S
 	$(CXX) -c $(CFLAGS) -MMD -o $@ $<
@@ -127,9 +123,9 @@ obj/scrypt-x86_64.o: scrypt-x86_64.S
 
 clean:
 	-rm -f obj/*.o
-	-rm -f obj-test/*.o
-	-rm -f test_corgicoin.exe
-	-rm -f corgicoind.exe
+	-rm -f obj/zerocoin/*.o
+	-rm -f test_VADE.exe
+	-rm -f VADEd.exe
 	-rm -f obj/build.h
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 

@@ -1,16 +1,15 @@
-Name CorgiCoin
+Name VADE
 
 RequestExecutionLevel highest
 SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 2.0.0
-!define COMPANY "CorgiCoin project"
-!define URL http://www.corgicoin.ru/
+!define VERSION 3.0.0
+!define COMPANY "VADE project"
 
 # MUI Symbol Definitions
-!define MUI_ICON "../share/pixmaps/corgicoin.ico"
+!define MUI_ICON "../share/pixmaps/VADE.ico"
 !define MUI_WELCOMEFINISHPAGE_BITMAP "../share/pixmaps/nsis-wizard.bmp"
 !define MUI_HEADERIMAGE
 !define MUI_HEADERIMAGE_RIGHT
@@ -19,8 +18,8 @@ SetCompressor /SOLID lzma
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT HKLM
 !define MUI_STARTMENUPAGE_REGISTRY_KEY ${REGKEY}
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME StartMenuGroup
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER CorgiCoin
-#!define MUI_FINISHPAGE_RUN $INSTDIR\Corgicoin-qt.exe
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER VADE
+#!define MUI_FINISHPAGE_RUN $INSTDIR\VADE-QT.exe
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP "../share/pixmaps/nsis-wizard.bmp"
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
@@ -45,14 +44,14 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-OutFile corgicoin-${VERSION}-win32-setup.exe
-InstallDir $PROGRAMFILES\CorgiCoin
+OutFile VADE-${VERSION}-win32-setup.exe
+InstallDir $PROGRAMFILES\VADE
 CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
 VIProductVersion 0.3.0.0
-VIAddVersionKey ProductName CorgiCoin
+VIAddVersionKey ProductName VADE
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
 VIAddVersionKey CompanyWebsite "${URL}"
@@ -66,15 +65,19 @@ ShowUninstDetails show
 Section -Main SEC0000
     SetOutPath $INSTDIR
     SetOverwrite on
-    File ../release/Corgicoin-qt.exe
+    File ../release/VADE-QT.exe
     #File /oname=license.txt ../COPYING
     #File /oname=readme.txt ../doc/README_windows.txt
     SetOutPath $INSTDIR\daemon
-    File ../src/corgicoind.exe
+    File ../src/VADEd.exe
     SetOutPath $INSTDIR\src
     File /r /x *.exe /x *.o ../src\*.*
     SetOutPath $INSTDIR
     WriteRegStr HKCU "${REGKEY}\Components" Main 1
+
+    # Remove old wxwidgets-based-bitcoin executable and locales:
+    #Delete /REBOOTOK $INSTDIR\novacoin.exe
+    #RMDir /r /REBOOTOK $INSTDIR\locale
 SectionEnd
 
 Section -post SEC0001
@@ -83,7 +86,7 @@ Section -post SEC0001
     WriteUninstaller $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_BEGIN Application
     CreateDirectory $SMPROGRAMS\$StartMenuGroup
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall CorgiCoin.lnk" $INSTDIR\uninstall.exe
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\Uninstall VADE.lnk" $INSTDIR\uninstall.exe
     !insertmacro MUI_STARTMENU_WRITE_END
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayName "$(^Name)"
     WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" DisplayVersion "${VERSION}"
@@ -95,10 +98,10 @@ Section -post SEC0001
     WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)" NoRepair 1
 
     # URI handling
-    WriteRegStr HKCR "corgicoin" "URL Protocol" ""
-    WriteRegStr HKCR "corgicoin" "" "URL:Corgicoin"
-    WriteRegStr HKCR "corgicoin\DefaultIcon" "" $INSTDIR\Corgicoin-qt.exe
-    WriteRegStr HKCR "corgicoin\shell\open\command" "" '"$INSTDIR\Corgicoin-qt.exe" "$$1"'
+    WriteRegStr HKCR "VADE" "URL Protocol" ""
+    WriteRegStr HKCR "VADE" "" "URL:VADE"
+    WriteRegStr HKCR "VADE\DefaultIcon" "" $INSTDIR\VADE-QT.exe
+    WriteRegStr HKCR "VADE\shell\open\command" "" '"$INSTDIR\VADE-QT.exe" "$$1"'
 SectionEnd
 
 # Macro for selecting uninstaller sections
@@ -116,7 +119,7 @@ done${UNSECTION_ID}:
 
 # Uninstaller sections
 Section /o -un.Main UNSEC0000
-    Delete /REBOOTOK $INSTDIR\Corgicoin-qt.exe
+    Delete /REBOOTOK $INSTDIR\VADE-QT.exe
     #Delete /REBOOTOK $INSTDIR\license.txt
     #Delete /REBOOTOK $INSTDIR\readme.txt
     RMDir /r /REBOOTOK $INSTDIR\daemon
@@ -128,7 +131,7 @@ Section -un.post UNSEC0001
     DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\Uninstall $(^Name).lnk"
     Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\$(^Name).lnk"
-    Delete /REBOOTOK "$SMSTARTUP\CorgiCoin.lnk"
+    Delete /REBOOTOK "$SMSTARTUP\VADE.lnk"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
     Delete /REBOOTOK $INSTDIR\debug.log
     Delete /REBOOTOK $INSTDIR\db.log
@@ -136,7 +139,7 @@ Section -un.post UNSEC0001
     DeleteRegValue HKCU "${REGKEY}" Path
     DeleteRegKey /IfEmpty HKCU "${REGKEY}\Components"
     DeleteRegKey /IfEmpty HKCU "${REGKEY}"
-    DeleteRegKey HKCR "corgicoin"
+    DeleteRegKey HKCR "VADE"
     RmDir /REBOOTOK $SMPROGRAMS\$StartMenuGroup
     RmDir /REBOOTOK $INSTDIR
     Push $R0

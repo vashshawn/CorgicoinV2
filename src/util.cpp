@@ -959,7 +959,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "corgicoin";
+    const char* pszModule = "VADE";
 #endif
     if (pex)
         return strprintf(
@@ -989,13 +989,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\corgicoin
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\corgicoin
-    // Mac: ~/Library/Application Support/corgicoin
-    // Unix: ~/.corgicoin
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\VADE
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\VADE
+    // Mac: ~/Library/Application Support/VADE
+    // Unix: ~/.VADE
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "corgicoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "VADE";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1007,10 +1007,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "corgicoin";
+    return pathRet / "VADE";
 #else
     // Unix
-    return pathRet / ".corgicoin";
+    return pathRet / ".VADE";
 #endif
 #endif
 }
@@ -1052,7 +1052,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "corgicoin.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "VADE.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1083,7 +1083,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "corgicoind.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "VADEd.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -1213,10 +1213,10 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
                 if (!fMatch)
                 {
                     fDone = true;
-                    string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong corgicoin will not work properly.");
+                    string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong VADE will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
-                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("corgicoin"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
+                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("VADE"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
                 }
             }
         }

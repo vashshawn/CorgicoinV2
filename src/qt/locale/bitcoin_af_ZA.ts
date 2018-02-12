@@ -3,12 +3,12 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About AudioCoin</source>
+        <source>About VADE</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;AudioCoin&lt;/b&gt; version</source>
+        <source>&lt;b&gt;VADE&lt;/b&gt; version</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -16,7 +16,7 @@
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The BlackCoin developers
-Copyright © 2014 The AudioCoin developers</source>
+Copyright © 2014 The VADE developers</source>
         <translation type="unfinished"/>
     </message>
     <message>

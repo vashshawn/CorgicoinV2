@@ -25,33 +25,22 @@ class CInv;
 class CRequestTracker;
 class CNode;
 
-class CTxMemPool;
-
 static const int LAST_POW_BLOCK = 420000;
 
-/** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 1000000;
-/** The maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
-/** The maximum size for transactions we're willing to relay/mine **/
-static const unsigned int MAX_STANDARD_TX_SIZE = MAX_BLOCK_SIZE_GEN/5;
-/** The maximum allowed number of signature check operations in a block (network rule) */
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
-/** The maximum number of orphan transactions kept in memory */
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
-/** The maximum number of entries in an 'inv' protocol message */
 static const unsigned int MAX_INV_SZ = 50000;
-/** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
 static const int64_t MIN_TX_FEE = 100;
-/** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
-/** No amount larger than this (in satoshi) is valid */
 static const int64_t MAX_MONEY = 10000000000 * COIN; // 10 bil total
+static const int64_t COIN_YEAR_REWARD = 10 * CENT; // 10% per year
+
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
-/** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
+// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 
-static const int64_t COIN_YEAR_REWARD = 10 * CENT; // 10% per year
 
 static const uint256 hashGenesisBlock("0x000006b8477694ab6299540be64a83feaa7749eb12071a810d2b273d0ac3cc76");
 static const uint256 hashGenesisBlockTestNet("0xadee450bef1018cd5755145185cc5d5b3b4d6c488c6c15013711393b8918b212");
@@ -130,11 +119,6 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan);
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake);
 void StakeMiner(CWallet *pwallet);
 void ResendWalletTransactions(bool fForce = false);
-
-
-/** (try to) add transaction to memory pool **/
-bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx,
-                        bool* pfMissingInputs);
 
 bool GetWalletFile(CWallet* pwallet, std::string &strWalletFileOut);
 
@@ -476,6 +460,24 @@ public:
         return SerializeHash(*this);
     }
 
+    bool IsFinal(int nBlockHeight=0, int64_t nBlockTime=0) const
+    {
+        AssertLockHeld(cs_main);
+        // Time based nLockTime implemented in 0.1.6
+        if (nLockTime == 0)
+            return true;
+        if (nBlockHeight == 0)
+            nBlockHeight = nBestHeight;
+        if (nBlockTime == 0)
+            nBlockTime = GetAdjustedTime();
+        if ((int64_t)nLockTime < ((int64_t)nLockTime < LOCKTIME_THRESHOLD ? (int64_t)nBlockHeight : nBlockTime))
+            return true;
+        BOOST_FOREACH(const CTxIn& txin, vin)
+            if (!txin.IsFinal())
+                return false;
+        return true;
+    }
+
     bool IsNewerThan(const CTransaction& old) const
     {
         if (vin.size() != old.vin.size())
@@ -674,18 +676,14 @@ public:
                        std::map<uint256, CTxIndex>& mapTestPool, const CDiskTxPos& posThisTx,
                        const CBlockIndex* pindexBlock, bool fBlock, bool fMiner);
     bool CheckTransaction() const;
+    bool AcceptToMemoryPool(CTxDB& txdb, bool* pfMissingInputs=NULL);
     bool GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const;  // ppcoin: get transaction coin age
 
 protected:
     const CTxOut& GetOutputFor(const CTxIn& input, const MapPrevTx& inputs) const;
 };
 
-/** Check for standard transaction types
-    @return True if all outputs (scriptPubKeys) use only standard transaction forms
-*/
-bool IsStandardTx(const CTransaction& tx);
 
-bool IsFinalTx(const CTransaction &tx, int nBlockHeight = 0, int64_t nBlockTime = 0);
 
 
 
@@ -741,6 +739,7 @@ public:
     int GetDepthInMainChain() const { CBlockIndex *pindexRet; return GetDepthInMainChain(pindexRet); }
     bool IsInMainChain() const { CBlockIndex *pindexRet; return GetDepthInMainChainINTERNAL(pindexRet) > 0; }
     int GetBlocksToMaturity() const;
+    bool AcceptToMemoryPool(CTxDB& txdb);
     bool AcceptToMemoryPool();
 };
 
@@ -1557,6 +1556,8 @@ public:
     std::map<uint256, CTransaction> mapTx;
     std::map<COutPoint, CInPoint> mapNextTx;
 
+    bool accept(CTxDB& txdb, CTransaction &tx,
+                bool* pfMissingInputs);
     bool addUnchecked(const uint256& hash, CTransaction &tx);
     bool remove(const CTransaction &tx, bool fRecursive = false);
     bool removeConflicts(const CTransaction &tx);

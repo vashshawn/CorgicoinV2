@@ -1,4 +1,4 @@
-IDI_ICON1 ICON DISCARDABLE "icons/corgicoin.ico"
+IDI_ICON1 ICON DISCARDABLE "icons/VADE.ico"
 
 #include <windows.h>             // needed for VERSIONINFO
 #include "../../clientversion.h" // holds the needed client version information
@@ -18,14 +18,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "CorgiCoin"
-            VALUE "FileDescription",    "CorgiCoin-Qt (OSS GUI client for CorgiCoin)"
+            VALUE "CompanyName",        "VADE"
+            VALUE "FileDescription",    "VADE-QT (OSS GUI client for VADE)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
-            VALUE "InternalName",       "corgicoin-qt"
-            VALUE "LegalCopyright",     "2009-2014 The Bitcoin developers, 2012-2014 The NovaCoin & PPCoin developers, 2014 The BlackCoin developers, 2014 The CorgiCoin developers"
+            VALUE "InternalName",       "VADE-QT"
+            VALUE "LegalCopyright",     "2009-2014 The Bitcoin developers, 2012-2014 The NovaCoin & PPCoin developers, 2014 The BlackCoin developers, 2014-2017 The CorgiCoin developers, 2017 VADE developers"
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
-            VALUE "OriginalFilename",   "corgicoin-qt.exe"
-            VALUE "ProductName",        "CorgiCoin-Qt"
+            VALUE "OriginalFilename",   "VADE-QT.exe"
+            VALUE "ProductName",        "VADE-QT"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

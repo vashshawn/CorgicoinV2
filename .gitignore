@@ -1,7 +1,7 @@
 src/*.exe
-src/corgicoin
-src/corgicoind
-src/test_corgicoin
+src/VADE
+src/VADEd
+src/test_VADE
 .*.swp
 *.*~*
 *.bak
@@ -9,17 +9,16 @@ src/test_corgicoin
 *.orig
 *.o
 *.patch
-.corgicoin
+.VADE
 
 # Compilation and Qt preprocessor part
 *.qm
-Makefile
-Corgicoin-qt
-Corgicoin-Qt.app
+VADE-QT
+VADE-QT.app
 
 # Unit-tests
 Makefile.test
-corgicoin-qt_test
+VADE-QT_test
 
 # Resources cpp
 qrc_*.cpp
@@ -29,6 +28,5 @@ qrc_*.cpp
 
 # Mac specific
 .DS_Store
+*.dmg
 build
-
-!src/leveldb-*/Makefile
