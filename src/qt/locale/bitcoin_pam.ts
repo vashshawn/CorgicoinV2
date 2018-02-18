@@ -13,10 +13,12 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The BlackCoin developers
-Copyright © 2014 The AudioCoin developers</source>
+        <source>Copyright (c) 2017 VADE Developers
+Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014 BlackCoin Developers
+Copyright (c) 2013-2014 NovaCoin Developers
+Copyright (c) 2011-2012 PPCoin Developers
+Copyright (c) 2009-2014 Bitcoin Developers</source>
         <translation type="unfinished"/>
     </message>
     <message>

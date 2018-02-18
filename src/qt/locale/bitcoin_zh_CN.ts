@@ -13,14 +13,18 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The BlackCoin developers
-Copyright © 2014 The VADE developers</source>
-        <translation>版权所有 © 2009-2014 比特币Bitcoin开发组
-版权所有 © 2012-2014 新星币VADE开发组
-版权所有 © 2014 黑币BlackCoin开发组
-版权所有 © 2014 暗影币VADE开发组</translation>
+        <source>Copyright (c) 2017 VADE Developers
+Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014 BlackCoin Developers
+Copyright (c) 2013-2014 NovaCoin Developers
+Copyright (c) 2011-2012 PPCoin Developers
+Copyright (c) 2009-2014 Bitcoin Developers</source>
+        <translation>版权所有 (c) 2017 VADE Developers
+版权所有 (c) 2014-2017 Corgicoin Developers
+版权所有 (c) 2014 BlackCoin Developers
+版权所有 (c) 2013-2014 NovaCoin Developers
+版权所有 (c) 2011-2012 PPCoin Developers
+版权所有 (c) 2009-2014 Bitcoin Developers</translation>
     </message>
     <message>
         <location line="+15"/>
