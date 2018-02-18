@@ -3,23 +3,23 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About AudioCoin</source>
-        <translation>О AudioCoin</translation>
+        <source>About VADE</source>
+        <translation>О VADE</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;AudioCoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;AudioCoin&lt;/b&gt; версия</translation>
+        <source>&lt;b&gt;VADE&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;VADE&lt;/b&gt; версия</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The BlackCoin developers
-Copyright © 2014 The AudioCoin developers</source>
+Copyright © 2014 The VADE developers</source>
         <translation>Все права защищены © 2009-2014 Разработчики Bitcoin
 Все права защищены © 2012-2014 Разработчики NovaCoin
-Все права защищены © 2014 Разработчики AudioCoin</translation>
+Все права защищены © 2014 Разработчики VADE</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -66,7 +66,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your AudioCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <source>These are your VADE addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
         <translation>Это Ваши адреса для получения платежей. Вы можете дать разные адреса отправителям, чтобы отслеживать, кто именно вам платит.</translation>
     </message>
     <message>
@@ -81,8 +81,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a AudioCoin address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом AudioCoin</translation>
+        <source>Sign a message to prove you own a VADE address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом VADE</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -96,8 +96,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified AudioCoin address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом AudioCoin</translation>
+        <source>Verify a message to ensure it was signed with a specified VADE address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом VADE</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -264,7 +264,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-58"/>
-        <source>AudioCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <source>VADE will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
         <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши монеты от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
@@ -378,8 +378,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about AudioCoin</source>
-        <translation>Показать информацию о AudioCoin&apos;е</translation>
+        <source>Show information about VADE</source>
+        <translation>Показать информацию о VADE&apos;е</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -428,13 +428,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a AudioCoin address</source>
-        <translation>Отправить монеты на указанный адрес AudioCoin</translation>
+        <source>Send coins to a VADE address</source>
+        <translation>Отправить монеты на указанный адрес VADE</translation>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for AudioCoin</source>
-        <translation>Изменить параметры конфигурации AudioCoin</translation>
+        <source>Modify configuration options for VADE</source>
+        <translation>Изменить параметры конфигурации VADE</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -473,8 +473,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-200"/>
-        <source>AudioCoin</source>
-        <translation>AudioCoin</translation>
+        <source>VADE</source>
+        <translation>VADE</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -483,8 +483,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About AudioCoin</source>
-        <translation>&amp;О AudioCoin</translation>
+        <source>&amp;About VADE</source>
+        <translation>&amp;О VADE</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -540,12 +540,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+0"/>
         <location line="+60"/>
-        <source>AudioCoin client</source>
-        <translation>AudioCoin клиент</translation>
+        <source>VADE client</source>
+        <translation>VADE клиент</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to AudioCoin network</source>
+        <source>%n active connection(s) to VADE network</source>
         <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform></translation>
     </message>
     <message>
@@ -660,8 +660,8 @@ Address: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid AudioCoin address or malformed URI parameters.</source>
-        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом AudioCoin или неправильными параметрами URI.</translation>
+        <source>URI can not be parsed! This can be caused by an invalid VADE address or malformed URI parameters.</source>
+        <translation>Не удалось обработать URI! Это может быть связано с неверным адресом VADE или неправильными параметрами URI.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -720,8 +720,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. AudioCoin can no longer continue safely and will quit.</source>
-        <translation>Произошла неисправимая ошибка. AudioCoin не может безопасно продолжать работу и будет закрыт.</translation>
+        <source>A fatal error occurred. VADE can no longer continue safely and will quit.</source>
+        <translation>Произошла неисправимая ошибка. VADE не может безопасно продолжать работу и будет закрыт.</translation>
     </message>
 </context>
 <context>
@@ -1040,8 +1040,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid AudioCoin address.</source>
-        <translation>Введённый адрес &quot;%1&quot; не является правильным AudioCoin-адресом.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid VADE address.</source>
+        <translation>Введённый адрес &quot;%1&quot; не является правильным VADE-адресом.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1059,8 +1059,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>AudioCoin-Qt</source>
-        <translation>AudioCoin-Qt</translation>
+        <source>VADE-Qt</source>
+        <translation>VADE-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1132,13 +1132,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start AudioCoin after logging in to the system.</source>
-        <translation>Автоматически запускать AudioCoin после входа в систему</translation>
+        <source>Automatically start VADE after logging in to the system.</source>
+        <translation>Автоматически запускать VADE после входа в систему</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start AudioCoin on system login</source>
-        <translation>&amp;Запускать AudioCoin при входе в систему</translation>
+        <source>&amp;Start VADE on system login</source>
+        <translation>&amp;Запускать VADE при входе в систему</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1157,8 +1157,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the AudioCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для AudioCoin-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
+        <source>Automatically open the VADE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для VADE-клиента на роутере. Работает только если Ваш роутер поддерживает UPnP, и данная функция включена.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1167,8 +1167,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the AudioCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>Подключаться к сети AudioCoin через прокси SOCKS (например, при подключении через Tor).</translation>
+        <source>Connect to the VADE network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>Подключаться к сети VADE через прокси SOCKS (например, при подключении через Tor).</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1242,8 +1242,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting AudioCoin.</source>
-        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска AudioCoin.</translation>
+        <source>The user interface language can be set here. This setting will take effect after restarting VADE.</source>
+        <translation>Здесь можно выбрать язык интерфейса. Настройки вступят в силу после перезапуска VADE.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1257,8 +1257,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show AudioCoin addresses in the transaction list or not.</source>
-        <translation>Показывать ли адреса AudioCoin в списке транзакций.</translation>
+        <source>Whether to show VADE addresses in the transaction list or not.</source>
+        <translation>Показывать ли адреса VADE в списке транзакций.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1304,8 +1304,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting AudioCoin.</source>
-        <translation>Эта настройка вступит в силу после перезапуска AudioCoin</translation>
+        <source>This setting will take effect after restarting VADE.</source>
+        <translation>Эта настройка вступит в силу после перезапуска VADE</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1323,8 +1323,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the AudioCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью AudioCoin после подключения, но этот процесс пока не завершён.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the VADE network after a connection is established, but this process has not completed yet.</source>
+        <translation>Отображаемая информация может быть устаревшей. Ваш бумажник автоматически синхронизируется с сетью VADE после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1539,8 +1539,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the AudioCoin-Qt help message to get a list with possible AudioCoin command-line options.</source>
-        <translation>Показать помощь по AudioCoin-Qt, чтобы получить список доступных параметров командной строки.</translation>
+        <source>Show the VADE-Qt help message to get a list with possible VADE command-line options.</source>
+        <translation>Показать помощь по VADE-Qt, чтобы получить список доступных параметров командной строки.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1559,13 +1559,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="-104"/>
-        <source>AudioCoin - Debug window</source>
-        <translation>AudioCoin - Окно отладки</translation>
+        <source>VADE - Debug window</source>
+        <translation>VADE - Окно отладки</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>AudioCoin Core</source>
-        <translation>Ядро AudioCoin</translation>
+        <source>VADE Core</source>
+        <translation>Ядро VADE</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1574,8 +1574,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the AudioCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Открыть отладочный лог-файл AudioCoin из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
+        <source>Open the VADE debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Открыть отладочный лог-файл VADE из текущего каталога данных. Это может занять несколько секунд для больших лог-файлов.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1584,8 +1584,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
-        <source>Welcome to the AudioCoin RPC console.</source>
-        <translation>Добро пожаловать в RPC-консоль AudioCoin.</translation>
+        <source>Welcome to the VADE RPC console.</source>
+        <translation>Добро пожаловать в RPC-консоль VADE.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1743,8 +1743,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a AudioCoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Введите AudioCoin-адрес (например SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Введите VADE-адрес (например SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1843,7 +1843,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid AudioCoin address</source>
+        <source>WARNING: Invalid VADE address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1917,8 +1917,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a AudioCoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Введите AudioCoin-адрес (например SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Введите VADE-адрес (например SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
 </context>
 <context>
@@ -1978,8 +1978,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this AudioCoin address</source>
-        <translation>Подписать сообщение, чтобы доказать владение адресом AudioCoin</translation>
+        <source>Sign the message to prove you own this VADE address</source>
+        <translation>Подписать сообщение, чтобы доказать владение адресом VADE</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2010,8 +2010,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified AudioCoin address</source>
-        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом AudioCoin</translation>
+        <source>Verify the message to ensure it was signed with the specified VADE address</source>
+        <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным адресом VADE</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -2021,8 +2021,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a AudioCoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Введите адрес AudioCoin (напр. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Введите адрес VADE (напр. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2031,8 +2031,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter AudioCoin signature</source>
-        <translation>Введите подпись AudioCoin</translation>
+        <source>Enter VADE signature</source>
+        <translation>Введите подпись VADE</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2602,7 +2602,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>AudioCoin version</source>
+        <source>VADE version</source>
         <translation>Версия</translation>
     </message>
     <message>
@@ -2612,8 +2612,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or audiocoind</source>
-        <translation>Отправить команду на -server или audiocoind</translation>
+        <source>Send command to -server or VADEd</source>
+        <translation>Отправить команду на -server или VADEd</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2633,13 +2633,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: audiocoin.conf)</source>
-        <translation>Указать конфигурационный файл (по умолчанию: audiocoin.conf)</translation>
+        <source>Specify configuration file (default: VADE.conf)</source>
+        <translation>Указать конфигурационный файл (по умолчанию: VADE.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: audiocoind.pid)</source>
-        <translation>Указать pid-файл (по умолчанию: audiocoind.pid)</translation>
+        <source>Specify pid file (default: VADEd.pid)</source>
+        <translation>Указать pid-файл (по умолчанию: VADEd.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2788,8 +2788,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+61"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong AudioCoin will not work properly.</source>
-        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, AudioCoin будет работать некорректно.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong VADE will not work properly.</source>
+        <translation>Внимание: убедитесь, что дата и время на Вашем компьютере выставлены верно. Если Ваши часы идут неправильно, VADE будет работать некорректно.</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2978,13 +2978,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=audiocoinrpc
+rpcuser=VADErpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;AudioCoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
 </source>
         <translation type="unfinished"/>
     </message>
@@ -3110,13 +3110,13 @@ for example: alertnotify=echo %%s | mail -s &quot;AudioCoin Alert&quot; admin@fo
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  AudioCoin is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s.  VADE is probably already running.</source>
         <translation>Невозможно установить блокировку на рабочую директорию %s.  Возможно, бумажник уже запущен.</translation>
     </message>
     <message>
         <location line="-98"/>
-        <source>AudioCoin</source>
-        <translation>AudioCoin</translation>
+        <source>VADE</source>
+        <translation>VADE</translation>
     </message>
     <message>
         <location line="+140"/>
@@ -3150,13 +3150,13 @@ for example: alertnotify=echo %%s | mail -s &quot;AudioCoin Alert&quot; admin@fo
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of AudioCoin</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию AudioCoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of VADE</source>
+        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию VADE</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart AudioCoin to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите AudioCoin для завершения операции</translation>
+        <source>Wallet needed to be rewritten: restart VADE to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите VADE для завершения операции</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3225,8 +3225,8 @@ for example: alertnotify=echo %%s | mail -s &quot;AudioCoin Alert&quot; admin@fo
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. AudioCoin is probably already running.</source>
-        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, AudioCoin уже работает.</translation>
+        <source>Unable to bind to %s on this computer. VADE is probably already running.</source>
+        <translation>Невозможно привязаться к %s на этом компьютере.  Возможно, VADE уже работает.</translation>
     </message>
     <message>
         <location line="-97"/>

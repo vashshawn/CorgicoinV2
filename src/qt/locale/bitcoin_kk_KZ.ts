@@ -3138,7 +3138,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart AudioCoin to complete</source>
+        <source>Wallet needed to be rewritten: restart VADE to complete</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3208,7 +3208,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. AudioCoin is probably already running.</source>
+        <source>Unable to bind to %s on this computer. VADE is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
