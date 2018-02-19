@@ -13,11 +13,12 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The BlackCoin developers
-Copyright © 2014 - 2017 The Corgicoin developers
-Copyright © 2017 - 2018 The VADE developers</source>
+        <source>Copyright (c) 2017 VADE Developers
+Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014 BlackCoin Developers
+Copyright (c) 2013-2014 NovaCoin Developers
+Copyright (c) 2011-2012 PPCoin Developers
+Copyright (c) 2009-2014 Bitcoin Developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3138,7 +3139,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart AudioCoin to complete</source>
+        <source>Wallet needed to be rewritten: restart VADE to complete</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3208,7 +3209,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. AudioCoin is probably already running.</source>
+        <source>Unable to bind to %s on this computer. VADE is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
