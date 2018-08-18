@@ -252,12 +252,7 @@ int OptionsModel::getDisplayUnit()
 {
     return nDisplayUnit;
 }
-/*
-int OptionsModel::updateTheme()
-{
-    return nTheme;
-}
-*/
+
 bool OptionsModel::getDisplayAddresses()
 {
     return bDisplayAddresses;

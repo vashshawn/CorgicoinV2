@@ -67,7 +67,7 @@ struct MessageTableEntry
     }
 };
 
-/** Interface to corgicoin Secure Messaging from Qt view code. */
+/** Interface to VADE Secure Messaging from Qt view code. */
 class MessageModel : public QAbstractTableModel
 {
     Q_OBJECT

@@ -525,7 +525,7 @@ void StakeMiner(CWallet *pwallet)
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
     // Make this thread recognisable as the mining thread
-    RenameThread("corgicoin-miner");
+    RenameThread("VADE-miner");
 
     bool fTryToSync = true;
 

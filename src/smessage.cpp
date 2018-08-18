@@ -1,4 +1,4 @@
-// Copyright (c) 2014 The Shadowcoin developers
+// Copyright (c) 2014 The Blackcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -588,7 +588,7 @@ bool SecMsgDB::EraseSmesg(unsigned char* chKey)
 void ThreadSecureMsg(void* parg)
 {
     // -- bucket management thread
-    RenameThread("corgicoin-smsg"); // Make this thread recognisable
+    RenameThread("VADE-smsg"); // Make this thread recognisable
     
     uint32_t delay = 0;
     
@@ -699,7 +699,7 @@ void ThreadSecureMsg(void* parg)
 void ThreadSecureMsgPow(void* parg)
 {
     // -- proof of work thread
-    RenameThread("corgicoin-smsg-pow"); // Make this thread recognisable
+    RenameThread("VADE-smsg-pow"); // Make this thread recognisable
     
     int rv;
     std::vector<unsigned char> vchKey;
