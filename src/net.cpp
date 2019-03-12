@@ -1336,7 +1336,7 @@ void ThreadDNSAddressSeed2(void* parg)
                     {
                         int nOneDay = 24*3600;
                         CAddress addr = CAddress(CService(ip, GetDefaultPort()));
-                        addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 2 and 7 days old
+                        addr.nTime = GetTime() - 2*nOneDay - GetRand(4*nOneDay); // use a random age between 2 and 7 days old
                         vAdd.push_back(addr);
                         found++;
                     }
