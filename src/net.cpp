@@ -24,7 +24,7 @@
 using namespace std;
 using namespace boost;
 
-static const int MAX_OUTBOUND_CONNECTIONS = 16;
+static const int MAX_OUTBOUND_CONNECTIONS = 60;
 
 void ThreadMessageHandler2(void* parg);
 void ThreadSocketHandler2(void* parg);
@@ -1336,7 +1336,7 @@ void ThreadDNSAddressSeed2(void* parg)
                     {
                         int nOneDay = 24*3600;
                         CAddress addr = CAddress(CService(ip, GetDefaultPort()));
-                        addr.nTime = GetTime() - 2*nOneDay - GetRand(4*nOneDay); // use a random age between 2 and 7 days old
+                        addr.nTime = GetTime() - 2*nOneDay - GetRand(7*nOneDay); // use a random age between 2 and 7 days old
                         vAdd.push_back(addr);
                         found++;
                     }
@@ -1433,11 +1433,11 @@ void static ProcessOneShot()
             AddOneShot(strDest);
     }
 }
-
-void static ThreadStakeMiner(void* parg)
+// ppcoin: stake minter thread
+void static ThreadStakeMiner()
 {
-    printf("ThreadStakeMiner started\n");
-    CWallet* pwallet = (CWallet*)parg;
+    LogPrintf("ThreadStakeMiner started\n");
+    CWallet* pwallet = pwalletMain;
     try
     {
         vnThreadsRunning[THREAD_STAKE_MINER]++;
@@ -1960,7 +1960,15 @@ void static Discover()
                 CNetAddr addr(s6->sin6_addr);
                 if (AddLocal(addr, LOCAL_IF))
                     printf("IPv6 %s: %s\n", ifa->ifa_name, addr.ToString().c_str());
+#ifdef USE_IPV6
+            else if (ifa->ifa_addr->sa_family == AF_INET6)
+            {
+                struct sockaddr_in6* s6 = (struct sockaddr_in6*)(ifa->ifa_addr);
+                CNetAddr addr(s6->sin6_addr);
+                if (AddLocal(addr, LOCAL_IF))
+                    printf("IPv6 %s: %s\n", ifa->ifa_name, addr.ToString().c_str());
             }
+#endif
         }
         freeifaddrs(myaddrs);
     }
