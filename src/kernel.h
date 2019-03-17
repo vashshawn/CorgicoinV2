@@ -5,6 +5,7 @@
 #define PPCOIN_KERNEL_H
 
 #include "main.h"
+#include "wallet.h"
 
 // MODIFIER_INTERVAL: time to elapse before new modifier is computed
 extern unsigned int nModifierInterval;
