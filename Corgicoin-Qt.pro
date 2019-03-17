@@ -4,10 +4,12 @@ VERSION = 2.0.0
 INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE __STDC_FORMAT_MACROS __STDC_LIMIT_MACROS
+DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN __NO_SYSTEM_INCLUDES
 CONFIG += no_include_pwd
 CONFIG += thread
 CONFIG += static
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+lessThan(QT_MAJOR_VERSION, 5): CONFIG += static
 
 
 # QMAKE_CC=clang
@@ -44,15 +46,18 @@ win32-g++-cross: QMAKE_TARGET.arch = $$TARGET_PLATFORM
 #QRENCODE_LIB_PATH=C:/deps/qrencode-4.0.0/.libs
 
 
+
+
 OBJECTS_DIR = build
 MOC_DIR = build
 UI_DIR = build
 
 # use: qmake "RELEASE=1"
 contains(RELEASE, 1) {
-   macx:QMAKE_CXXFLAGS += -isysroot /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7
-    macx:QMAKE_CFLAGS += -isysroot /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7
-    macx:QMAKE_OBJECTIVE_CFLAGS += -isysroot /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk -mmacosx-version-min=10.7
+    # Mac: compile for maximum compatibility (10.5, 32-bit)
+    macx:QMAKE_CXXFLAGS += -isysroot /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7
+    macx:QMAKE_CFLAGS += -isysroot /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7
+    macx:QMAKE_OBJECTIVE_CFLAGS += -isysroot /Applications/Xcode-beta.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.7
 
     !windows:!macx {
         # Linux: static link
@@ -75,7 +80,6 @@ contains(DEBUG, 1) {
 }
 
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
-
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
 
@@ -130,7 +134,7 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
 
-contains(USE_LEVELDB, 1) {
+contains(USE_LEVELDB, 1) 
     message(Building with LevelDB transaction index)
     DEFINES += USE_LEVELDB
     
@@ -153,7 +157,7 @@ genleveldb.depends = FORCE
 PRE_TARGETDEPS += $$PWD/src/leveldb/libleveldb.a
 QMAKE_EXTRA_TARGETS += genleveldb
 # Gross ugly hack that depends on qmake internals, unfortunately there is no other way to do it.
-QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clea}n
+QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) clean
 } else {
  message(Building with Berkeley DB transaction index)
     SOURCES += src/txdb-bdb.cpp
@@ -197,14 +201,15 @@ contains(USE_BUILD_INFO, 1) {
     DEFINES += HAVE_BUILD_INFO
 }
 
-contains(USE_O3, 1) {
-    message(Building O3 optimization flag)
-    QMAKE_CXXFLAGS_RELEASE -= -O2
-    QMAKE_CFLAGS_RELEASE -= -O2
-    QMAKE_CXXFLAGS += -O3
-    QMAKE_CFLAGS += -O3
+equals(QMAKE_HOST.arch, "armv7l") {
+    message(FOUND host = $$QMAKE_HOST.arch)
+    QMAKE_CXXFLAGS += -DNOSSE
+    QMAKE_CFLAGS += -DNOSSE
 }
-
+else {
+    QMAKE_CXXFLAGS += -msse2
+    QMAKE_CFLAGS += -msse2
+}
 
 
 QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
@@ -250,6 +255,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/script.h \
     src/stealth.h \
     src/init.h \
+    src/bloom.h \
     src/mruset.h \
     src/json/json_spirit_writer_template.h \
     src/json/json_spirit_writer.h \
@@ -299,7 +305,11 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/sendmessagesdialog.h \
     src/qt/sendmessagesentry.h \
     src/qt/plugins/mrichtexteditor/mrichtextedit.h \
-    src/qt/qvalidatedtextedit.h
+    src/qt/qvalidatedtextedit.h \
+    src/qt/recurringsendentry.h \
+    src/qt/recurringsendpage.h \
+    src/qt/repairwalletdialog.h
+
 
 SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -378,7 +388,10 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/scrypt-x86_64.S \
     src/scrypt.cpp \
     src/pbkdf2.cpp \
-    src/stealth.cpp
+    src/stealth.cpp \
+    src/qt/recurringsendpage.cpp \
+    src/qt/recurringsendentry.cpp \
+    src/qt/repairwalletdialog.cpp
 
 RESOURCES += \
     src/qt/bitcoin.qrc \
@@ -401,6 +414,10 @@ FORMS += \
     src/qt/forms/sendmessagesentry.ui \
     src/qt/forms/sendmessagesdialog.ui \
     src/qt/plugins/mrichtexteditor/mrichtextedit.ui
+    src/qt/forms/recurringSend.ui \
+    src/qt/forms/recurringEntry.ui \
+    src/qt/forms/repairwalletdialog.ui
+
     
 QT += network
 
@@ -415,7 +432,7 @@ contains(BITCOIN_QT_TEST, 1) {
     HEADERS += src/qt/test/uritests.h
     DEPENDPATH += src/qt/test
     QT += testlib
-    TARGET = mintcoin-qt_test
+    TARGET = corgicoin-qt_test
     DEFINES += BITCOIN_QT_TEST
 }
 CODECFORTR = UTF-8
@@ -440,41 +457,45 @@ QMAKE_EXTRA_COMPILERS += TSQM
 
 # "Other files" to show in Qt Creator
 OTHER_FILES += \
-    doc/*.rst doc/*.txt doc/README README.md res/bitcoin-qt.rc \
-    src/Tumler.py
+    doc/*.rst doc/*.txt doc/README README.md res/bitcoin-qt.rc src/test/*.cpp src/test/*.h src/qt/test/*.cpp src/qt/test/*.h
 
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    windows:BOOST_LIB_SUFFIX = -mgw44-mt-1_53
+    windows:BOOST_LIB_SUFFIX = -mt
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
-    win32:BOOST_THREAD_LIB_SUFFIX = _win32$$BOOST_LIB_SUFFIX
-    else:BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
+    BOOST_THREAD_LIB_SUFFIX = $$BOOST_LIB_SUFFIX
+    windows:BOOST_THREAD_LIB_SUFFIX = _win32-mt
 }
 
 isEmpty(BDB_LIB_PATH) {
-    macx:BDB_LIB_PATH = /opt/local/lib/db48
-}
-
-isEmpty(BDB_LIB_SUFFIX) {
-    macx:BDB_LIB_SUFFIX = -6.0
+    macx:BDB_LIB_PATH = /usr/local/opt/berkeley-db@4/lib
 }
 
 isEmpty(BDB_INCLUDE_PATH) {
-    macx:BDB_INCLUDE_PATH = /opt/local/include/db60
+    macx:BDB_INCLUDE_PATH = /usr/local/opt/berkeley-db@4/include
 }
 
 isEmpty(BOOST_LIB_PATH) {
-    macx:BOOST_LIB_PATH = /opt/local/lib
+    macx:BOOST_LIB_PATH = /usr/local/opt/boost/lib
 }
 
 isEmpty(BOOST_INCLUDE_PATH) {
-    macx:BOOST_INCLUDE_PATH = /opt/local/include
+    macx:BOOST_INCLUDE_PATH = /usr/local/opt/boost/include
+}
+
+isEmpty(OPENSSL_LIB_PATH) {
+    macx:OPENSSL_LIB_PATH = /usr/local/opt/openssl/lib
+}
+
+isEmpty(OPENSSL_INCLUDE_PATH) {
+    macx:OPENSSL_INCLUDE_PATH = /usr/local/opt/openssl/include
 }
 
 windows:DEFINES += WIN32
+windows:DEFINES += _WINDOWS
 windows:RC_FILE = src/qt/res/bitcoin-qt.rc
 
 windows:!contains(MINGW_THREAD_BUGFIX, 0) {
@@ -484,8 +505,13 @@ windows:!contains(MINGW_THREAD_BUGFIX, 0) {
     # it is prepended to QMAKE_LIBS_QT_ENTRY.
     # It can be turned off with MINGW_THREAD_BUGFIX=0, just in case it causes
     # any problems on some untested qmake profile now or in the future.
-    DEFINES += _MT BOOST_THREAD_PROVIDES_GENERIC_SHARED_MUTEX_ON_WIN
+    DEFINES += _MT 
     QMAKE_LIBS_QT_ENTRY = -lmingwthrd $$QMAKE_LIBS_QT_ENTRY
+}
+
+!windows:!macx {
+    DEFINES += LINUX
+    LIBS += -lrt
 }
 
 macx:HEADERS += src/qt/macdockiconhandler.h \
@@ -496,7 +522,7 @@ macx:LIBS += -framework Foundation -framework ApplicationServices -framework App
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
 macx:ICON = src/qt/res/icons/corgicoin.icns
 macx:TARGET = "Corgicoin-Qt"
-macx:QMAKE_CFLAGS_THREAD += -pthread
+macx:QMAKE_CFLAGS_THREAD += -pthread -no-integrated-as
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
 
