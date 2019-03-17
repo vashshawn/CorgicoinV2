@@ -9,6 +9,8 @@
 #include "version.h"
 #include "ui_interface.h"
 #include <boost/algorithm/string/join.hpp>
+#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
+#include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
 
 // Work around clang compilation problem in Boost 1.46:
 // /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
@@ -24,6 +26,8 @@ namespace boost {
 #include <boost/program_options/parsers.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 #include <openssl/crypto.h>
@@ -31,12 +35,6 @@ namespace boost {
 #include <stdarg.h>
 
 #ifdef WIN32
-#ifdef _MSC_VER
-#pragma warning(disable:4786)
-#pragma warning(disable:4804)
-#pragma warning(disable:4805)
-#pragma warning(disable:4717)
-#endif
 #ifdef _WIN32_WINNT
 #undef _WIN32_WINNT
 #endif
@@ -52,10 +50,16 @@ namespace boost {
 #include <io.h> /* for _commit */
 #include "shlobj.h"
 #elif defined(__linux__)
-# include <sys/prctl.h>
+#include <sys/prctl.h>
 #endif
 
+#if !defined(WIN32) && !defined(ANDROID)
+#include <execinfo.h>
+#endif
+
+
 using namespace std;
+namespace bt = boost::posix_time;
 
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
@@ -76,6 +80,25 @@ bool fNoListen = false;
 bool fLogTimestamps = false;
 CMedianFilter<int64_t> vTimeOffsets(200,0);
 bool fReopenDebugLog = false;
+
+// Extended DecodeDumpTime implementation, see this page for details:
+// http://stackoverflow.com/questions/3786201/parsing-of-date-time-from-string-boost
+const std::locale formats[] = {
+    std::locale(std::locale::classic(),new bt::time_input_facet("%Y-%m-%dT%H:%M:%SZ")),
+    std::locale(std::locale::classic(),new bt::time_input_facet("%Y-%m-%d %H:%M:%S")),
+    std::locale(std::locale::classic(),new bt::time_input_facet("%Y/%m/%d %H:%M:%S")),
+    std::locale(std::locale::classic(),new bt::time_input_facet("%d.%m.%Y %H:%M:%S")),
+    std::locale(std::locale::classic(),new bt::time_input_facet("%Y-%m-%d"))
+};
+
+const size_t formats_n = sizeof(formats)/sizeof(formats[0]);
+
+std::time_t pt_to_time_t(const bt::ptime& pt)
+{
+    bt::ptime timet_start(boost::gregorian::date(1970,1,1));
+    bt::time_duration diff = pt - timet_start;
+    return diff.ticks()/bt::time_duration::rep_type::ticks_per_second;
+}
 
 // Init OpenSSL library multithreading support
 static CCriticalSection** ppmutexOpenSSL;
@@ -103,11 +126,11 @@ public:
         CRYPTO_set_locking_callback(locking_callback);
 
 #ifdef WIN32
-        // Seed OpenSSL PRNG with current contents of the screen
+        // Seed random number generator with screen scrape and other hardware sources
         RAND_screen();
 #endif
 
-        // Seed OpenSSL PRNG with performance counter
+        // Seed random number generator with performance counter
         RandAddSeed();
     }
     ~CInit()
@@ -517,15 +540,15 @@ void ParseParameters(int argc, const char* const argv[])
             *pszValue++ = '\0';
         }
         #ifdef WIN32
-        _strlwr(psz);
-        if (psz[0] == '/')
-            psz[0] = '-';
-        #endif
-        if (psz[0] != '-')
+        boost::to_lower(str);
+       if (boost::algorithm::starts_with(str, "/"))
+            str = "-" + str.substr(1);
+#endif
+        if (str[0] != '-')
             break;
 
-        mapArgs[psz] = pszValue;
-        mapMultiArgs[psz].push_back(pszValue);
+        mapArgs[str] = strValue;
+        mapMultiArgs[str].push_back(strValue);
     }
 
     // New 0.6 features:
@@ -1150,25 +1173,38 @@ void ShrinkDebugFile()
 //  - Median of other nodes clocks
 //  - The user (asking the user to fix the system clock if the first two disagree)
 //
-static int64_t nMockTime = 0;  // For unit testing
 
+// System clock
 int64_t GetTime()
 {
-    if (nMockTime) return nMockTime;
-
-    return time(NULL);
+    int64_t now = time(NULL);
+    assert(now > 0);
+    return now;
 }
 
-void SetMockTime(int64_t nMockTimeIn)
-{
-    nMockTime = nMockTimeIn;
-}
+// Trusted NTP offset or median of NTP samples.
+extern int64_t nNtpOffset;
 
-static int64_t nTimeOffset = 0;
+// Median of time samples given by other nodes.
+static int64_t nNodesOffset = INT64_MAX;
 
+// Select time offset:
 int64_t GetTimeOffset()
 {
-    return nTimeOffset;
+    // If NTP and system clock are in agreement within 40 minutes, then use NTP.
+    if (abs64(nNtpOffset) < 40 * 60)
+        return nNtpOffset;
+
+    // If not, then choose between median peer time and system clock.
+    if (abs64(nNodesOffset) < 70 * 60)
+        return nNodesOffset;
+
+    return 0;
+}
+
+int64_t GetNodesOffset()
+{
+        return nNodesOffset;
 }
 
 int64_t GetAdjustedTime()
@@ -1199,13 +1235,14 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
         }
         else
         {
-            nTimeOffset = 0;
+            nNodeOffset = INT64_MAX;
 
             static bool fDone;
             if (!fDone)
             {
+                 bool fMatch = false;
+                
                 // If nobody has a time different than ours but within 5 minutes of ours, give a warning
-                bool fMatch = false;
                 BOOST_FOREACH(int64_t nOffset, vSorted)
                     if (nOffset != 0 && abs64(nOffset) < 5 * 60)
                         fMatch = true;
@@ -1228,7 +1265,9 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
         printf("nTimeOffset = %+"PRId64"  (%+"PRId64" minutes)\n", nTimeOffset, nTimeOffset/60);
     }
 }
-
+ if (nNodesOffset != INT64_MAX)
+            printf("nNodesOffset = %+" PRId64 "  (%+" PRId64 " minutes)\n", nNodesOffset, nNodesOffset/60);
+    }
 uint32_t insecure_rand_Rz = 11;
 uint32_t insecure_rand_Rw = 11;
 void seed_insecure_rand(bool fDeterministic)
@@ -1330,4 +1369,14 @@ bool NewThread(void(*pfn)(void*), void* parg)
         return false;
     }
     return true;
+}
+
+std::string DateTimeStrFormat(const char* pszFormat, int64_t nTime)
+{
+    // std::locale takes ownership of the pointer
+    std::locale loc(std::locale::classic(), new boost::posix_time::time_facet(pszFormat));
+    std::stringstream ss;
+    ss.imbue(loc);
+    ss << boost::posix_time::from_time_t(nTime);
+    return ss.str();
 }
