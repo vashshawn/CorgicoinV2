@@ -171,5 +171,5 @@ script: |
     done
     #
     cd $INSTALLPREFIX
-    find include lib | sort | tar --no-recursion -cJf $OUTDIR/VADE-deps-win$BITS-gitian.tar.xz -T -
+    find include lib | sort | tar --no-recursion -cJf $OUTDIR/Corgicoin-deps-win$BITS-gitian.tar.xz -T -
   done # for BITS in
