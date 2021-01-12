@@ -1,9 +1,9 @@
-Building VADE
+Building Corgicoin
 
 See doc/readme-qt.rst for instructions on building VADE QT,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of VADE.
+implementation of Corgicoin.
 
 See doc/build-*.txt for instructions on building VADEd,
 the intended-for-services, no-graphical-interface, reference
-implementation of VADE.
+implementation of Corgicoin.
