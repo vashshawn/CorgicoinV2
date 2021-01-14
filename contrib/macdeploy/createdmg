@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-OTOOL=${HOST}-otool INSTALLNAMETOOL=${HOST}-install_name_tool STRIP=${HOST}-strip contrib/macdeploy/macdeployqtplus VADE.app
+OTOOL=${HOST}-otool INSTALLNAMETOOL=${HOST}-install_name_tool STRIP=${HOST}-strip contrib/macdeploy/macdeployqtplus Corgicoin.app
 mkdir -p dist/.background
 install contrib/macdeploy/background.png dist/.background
 install contrib/macdeploy/DS_Store dist/.DS_Store
@@ -9,5 +9,5 @@ install src/qt/res/icons/Corgicoin.icns dist/.VolumeIcon.icns
 cd dist
 ln -sf /Applications Applications
 cd ..
-genisoimage -no-cache-inodes -l -probe -V "VADE" -no-pad -r -apple -o VADE.tmp.dmg dist
+genisoimage -no-cache-inodes -l -probe -V "Corgicoin" -no-pad -r -apple -o Corgicoin.tmp.dmg dist
 dmg dmg Corgicoin.tmp.dmg Corgicoin.macosx.dmg
