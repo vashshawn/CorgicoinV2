@@ -109,4 +109,4 @@ script: |
   #done
   #
   cd $INSTALLPREFIX
-  find include lib | sort | tar --no-recursion -cJf $OUTDIR/VADE-deps-osx-gitian.tar.xz -T -
+  find include lib | sort | tar --no-recursion -cJf $OUTDIR/Corgicoin-deps-osx-gitian.tar.xz -T -
