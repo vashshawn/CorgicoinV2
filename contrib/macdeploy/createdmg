@@ -5,9 +5,9 @@ OTOOL=${HOST}-otool INSTALLNAMETOOL=${HOST}-install_name_tool STRIP=${HOST}-stri
 mkdir -p dist/.background
 install contrib/macdeploy/background.png dist/.background
 install contrib/macdeploy/DS_Store dist/.DS_Store
-install src/qt/res/icons/VADE.icns dist/.VolumeIcon.icns
+install src/qt/res/icons/Corgicoin.icns dist/.VolumeIcon.icns
 cd dist
 ln -sf /Applications Applications
 cd ..
 genisoimage -no-cache-inodes -l -probe -V "VADE" -no-pad -r -apple -o VADE.tmp.dmg dist
-dmg dmg VADE.tmp.dmg VADE.macosx.dmg
+dmg dmg Corgicoin.tmp.dmg Corgicoin.macosx.dmg
