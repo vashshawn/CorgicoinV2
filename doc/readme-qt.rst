@@ -1,4 +1,4 @@
-VADE-QT: Qt5 GUI for VADE
+Corgicoin-QT: Qt5 GUI for Corgicoin
 ===============================
 
 Build instructions
@@ -21,9 +21,9 @@ then execute the following:
     qmake
     make
 
-Alternatively, install Qt Creator and open the `VADE-QT.pro` file.
+Alternatively, install Qt Creator and open the `Corgicoin-QT.pro` file.
 
-An executable named `VADE-QT` will be built.
+An executable named `Corgicoin-QT` will be built.
 
 You can install the binary with:
    make install
