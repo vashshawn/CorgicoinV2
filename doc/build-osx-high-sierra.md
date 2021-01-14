@@ -1,4 +1,4 @@
-Copyright (c) 2017 VADE Developers
+Copyright (c) 2021 Corgicoin Developers
 
 # Mac OS X High Sierra Build Instructions and Notes
 
@@ -27,17 +27,18 @@ brew install boost@1.55 --c++11
 brew link boost@1.55 --force
 ```
 
-## Download VADE Core
+## Download Corgicoin Core
 
-Clone the VADE source code and cd into VADE
+Clone the Corgicoin
+ source code and cd into VADE
 
 ```
-git clone git@github.com:suchapp/VADE.git && cd VADE
+git clone git@github.com:magicone111/Corgicoin && cd Corgicoin
 ```
 
 ## Optional: build and run headless VADEd daemon
 
-Configure and build the headless VADE binaries to verify that everything is working
+Configure and build the headless Corgicoin binaries to verify that everything is working
 
 ```
 cd src/
@@ -45,35 +46,35 @@ cd src/
 make -f makefile.osx-homebrew
 ```
 
-### Running headless VADEd daemon
+### Running headless Corgicoind daemon
 
-VADE Core is now available at ./src/VADEd
+Corgicoin Core is now available at ./src/VADEd
 
 Before running, it's recommended you create an RPC configuration file.
 
 ```
-echo -e "rpcuser=VADEdogerpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/VADE/VADE.conf"
+echo -e "rpcuser=Corgicoinrpc\rpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Corgicoin/Corgicoin.conf"
 
-chmod 600 "/Users/${USER}/Library/Application Support/VADE/VADE.conf"
+chmod 600 "/Users/${USER}/Library/Application Support/Corgicoin/Corgicoin.conf"
 ```
 
-The first time you run VADEd, it will start downloading the blockchain. This process may take several days.
+The first time you run Corgicoind, it will start downloading the blockchain. This process may take several days.
 
 You can monitor the download process by looking at the debug.log file:
 
 ```
-tail -f $HOME/Library/Application\ Support/VADE/debug.log
+tail -f $HOME/Library/Application\ Support/Corgicoin/debug.log
 ```
 
 Other commands:
 
 ```
-./src/VADEd -daemon # Starts the bitcoin daemon.
-./src/VADEd --help # Outputs a list of command-line options.
-./src/VADEd help # Outputs a list of RPC commands when the daemon is running.
+./src/Corgicoind -daemon # Starts the bitcoin daemon.
+./src/Corgicoind --help # Outputs a list of command-line options.
+./src/Corgicoind help # Outputs a list of RPC commands when the daemon is running.
 ```
 
-## Building the VADE-QT app without QT Creator
+## Building the Corgicoin-QT app without QT Creator
 
 Install dependencies using homebrew
 
@@ -81,14 +82,14 @@ Install dependencies using homebrew
 brew install qt qrencode
 ```
 
-Configure and build VADE-QT
+Configure and build Corgicoin-QT
 ```
 /usr/local/Cellar/qt/5.10.0_1/bin/qmake -config release VADE-QT.pro "USE_UPNP=1" "USE_QRCODE=1" "RELEASE=1"
 
 make -f Makefile 
 ```
 
-Package VADE in .dmg
+Package Corgicoin in .dmg
 ```
 sudo easy_install appscript
 
