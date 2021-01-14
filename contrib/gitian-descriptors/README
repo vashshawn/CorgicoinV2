@@ -169,7 +169,7 @@ $ mv build/out/boost-*.zip inputs/
 $ ./bin/gbuild ../Corgicoin/contrib/gitian-descriptors/deps-win.yml
 $ mv build/out/Corgicoin-deps-*.zip inputs/
 
-$ ./bin/gbuild ../VADE/contrib/gitian-descriptors/qt-win.yml
+$ ./bin/gbuild ../Corgicoin/contrib/gitian-descriptors/qt-win.yml
 $ mv build/out/qt-win*.zip inputs/
 
 $ ./bin/gbuild --commit Corgicoin=HEAD ../Corgicoin/contrib/gitian-descriptors/gitian-win.yml
