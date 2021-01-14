@@ -22,8 +22,8 @@ remotes:
 - "url": "https://github.com/Magicone111/Corgicoin.git"
   "dir": "Corgicoin"
 files:
-- "VADE-deps-linux32-gitian.tar.xz"
-- "VADE-deps-linux64-gitian.tar.xz"
+- "Corgicoin-deps-linux32-gitian.tar.xz"
+- "Corgicoin-deps-linux64-gitian.tar.xz"
 script: |
   #Integrity check
   echo "0d1e171cd3683f2ebb8e3dc1ab29bdcca4ed136b4ee30d376f1c3cf8c29ea7d0  VADE-deps-linux32-gitian.tar.xz" |sha256sum -c
