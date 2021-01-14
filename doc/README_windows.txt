@@ -1,7 +1,6 @@
-VADE
+Corgicoin
 
-Copyright (c) 2017 VADE Developers
-Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014-2021 Corgicoin Developers
 Copyright (c) 2014 BlackCoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
 Copyright (c) 2011-2012 PPCoin Developers
@@ -16,8 +15,7 @@ cryptographic software written by Eric Young (eay@cryptsoft.com).
 
 Intro
 -----
-VADE is a free open source project derived from Bitcoin, with
+Corgicoin is a free open source project derived from Bitcoin, with
 the goal of providing a long-term energy-efficient scrypt-based crypto-currency.
 Built on the foundation of Bitcoin, PPCoin, NovaCoin and BlackCoin, innovations such as proof-of-stake
 help further advance the field of crypto-currency.
-
