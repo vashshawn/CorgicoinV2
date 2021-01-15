@@ -1,6 +1,6 @@
 <RCC>
   <qresource prefix="qss_icons">
-    <file>VADE.png</file>
+    <file>corgicoin.png</file>
     <file>rc/up_arrow_disabled.png</file>
     <file>rc/Hmovetoolbar.png</file>
     <file>rc/stylesheet-branch-end.png</file>
@@ -28,6 +28,6 @@
   </qresource>
   <qresource prefix="originalStyle">
     <file>style.qss</file>
-    <file>VADE.png</file>
+    <file>corgicoin.png</file>
   </qresource>
 </RCC>
