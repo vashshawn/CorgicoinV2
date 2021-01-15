@@ -989,13 +989,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\VADE
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\VADE
-    // Mac: ~/Library/Application Support/VADE
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Corgicoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Corgicoin
+    // Mac: ~/Library/Application Support/Corgicoin
     // Unix: ~/.VADE
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "VADE";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "Corgicoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1007,10 +1007,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "VADE";
+    return pathRet / "Corgicoin";
 #else
     // Unix
-    return pathRet / ".VADE";
+    return pathRet / ".Corgicoin";
 #endif
 #endif
 }
@@ -1052,7 +1052,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "VADE.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "corgicoin.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1083,7 +1083,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "VADEd.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "Corgicoind.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -1216,7 +1216,7 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
                     string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong VADE will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
-                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("VADE"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
+                    uiInterface.ThreadSafeMessageBox(strMessage+" ", string("Corgicoin"), CClientUIInterface::OK | CClientUIInterface::ICON_EXCLAMATION);
                 }
             }
         }
