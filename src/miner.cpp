@@ -7,6 +7,8 @@
 #include "txdb.h"
 #include "miner.h"
 #include "kernel.h"
+#include "util.h"
+#include <memory>
 
 using namespace std;
 
