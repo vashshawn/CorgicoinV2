@@ -5,7 +5,8 @@
 
 #include "walletdb.h"
 #include "wallet.h"
-#include <boost/version.hpp>
+
+// #include <boost/version.hpp>
 #include <boost/filesystem.hpp>
 
 using namespace std;
@@ -178,7 +179,8 @@ CWalletDB::ReorderTransactions(CWallet* pwallet)
                     return DB_LOAD_FAIL;
         }
     }
-
+    WriteOrderPosNext(nOrderPosNext);
+    
     return DB_LOAD_OK;
 }
 
