@@ -111,12 +111,15 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
 {
     // Create new block
     auto_ptr<CBlock> pblock(new CBlock());
+    
     if (!pblock.get())
         return NULL;
 
     CBlockIndex* pindexPrev = pindexBest;
+    
     // Create coinbase tx
     CTransaction txNew;
+    
     txNew.vin.resize(1);
     txNew.vin[0].prevout.SetNull();
     txNew.vout.resize(1);
@@ -125,7 +128,10 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
 
     if (!fProofOfStake)
     {
-        CReserveKey reservekey(pwallet);
+        // Corgicoin: all PoW blocks are version 2
+        pblock->nVersion = 2;
+        
+        // CReserveKey reservekey(pwallet);
         CPubKey pubkey;
         if (!reservekey.GetReservedKey(pubkey))
             return NULL;
@@ -185,7 +191,8 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
         for (map<uint256, CTransaction>::iterator mi = mempool.mapTx.begin(); mi != mempool.mapTx.end(); ++mi)
         {
             CTransaction& tx = (*mi).second;
-            if (tx.IsCoinBase() || tx.IsCoinStake() || !tx.IsFinal())
+            // if (tx.IsCoinBase() || tx.IsCoinStake() || !tx.IsFinal())
+            if (tx.IsCoinBase() || tx.IsCoinStake() || !tx.IsFinal())(tx, pindexPrev->nHeight + 1))
                 continue;
 
             COrphan* porphan = NULL;
@@ -285,7 +292,7 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
                 continue;
 
             // Transaction fee
-            int64_t nMinFee = tx.GetMinFee(nBlockSize, GMF_BLOCK);
+            int64_t nMinFee = tx.GetMinFee(nBlockSize, GMF_BLOCK, 0, true);
 
             // Skip free transactions if we're past the minimum block size:
             if (fSortedByFee && (dFeePerKb < nMinTxFee) && (nBlockSize + nTxSize >= nBlockMinSize))
@@ -316,7 +323,11 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
             nTxSigOps += tx.GetP2SHSigOpCount(mapInputs);
             if (nBlockSigOps + nTxSigOps >= MAX_BLOCK_SIGOPS)
                 continue;
-
+            
+            // if (!tx.ConnectInputs(txdb, mapInputs, mapTestPoolTmp, CDiskTxPos(1,1,1), pindexPrev, false, true))
+            // Note that flags: we don't want to set mempool/IsStandard()
+            // policy here, but we still have to ensure that the block we
+            // create only contains transactions that are valid in new blocks.
             if (!tx.ConnectInputs(txdb, mapInputs, mapTestPoolTmp, CDiskTxPos(1,1,1), pindexPrev, false, true))
                 continue;
             mapTestPoolTmp[tx.GetHash()] = CTxIndex(CDiskTxPos(1,1,1), tx.vout.size());
@@ -520,26 +531,29 @@ bool CheckStake(CBlock* pblock, CWallet& wallet)
     return true;
 }
 
-void StakeMiner(CWallet *pwallet)
+// void StakeMiner(CWallet *pwallet)
+void ThreadStakeMiner(CWallet *pwallet)
 {
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
     // Make this thread recognisable as the mining thread
     RenameThread("Corgicoin-miner");
 
+    CReserveKey reservekey(pwallet);
+    
     bool fTryToSync = true;
 
     while (true)
     {
-        if (fShutdown)
-            return;
+        // if (fShutdown)
+        //   return;
 
         while (pwallet->IsLocked())
         {
             nLastCoinStakeSearchInterval = 0;
             MilliSleep(1000);
-            if (fShutdown)
-                return;
+           //  if (fShutdown)
+           //     return;
         }
 
         while (vNodes.empty() || IsInitialBlockDownload())
@@ -547,14 +561,15 @@ void StakeMiner(CWallet *pwallet)
             nLastCoinStakeSearchInterval = 0;
             fTryToSync = true;
             MilliSleep(1000);
-            if (fShutdown)
-                return;
+            // if (fShutdown)
+            //    return;
         }
 
         if (fTryToSync)
         {
             fTryToSync = false;
-            if (vNodes.size() < 3 || nBestHeight < GetNumBlocksOfPeers())
+            // if ((!TestNet() && vNodes.size() < 3) || nBestHeight < GetNumBlocksOfPeers())
+            if (vNodes.size() < 3 || pindexBest->GetBlockTime() < GetTime() - 10 * 60)
             {
                 MilliSleep(60000);
                 continue;
