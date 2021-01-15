@@ -3,6 +3,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+
 #include "db.h"
 #include "net.h"
 #include "init.h"
@@ -371,7 +372,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 
             pszGet = "GET / HTTP/1.1\r\n"
                      "Host: checkip.dyndns.org\r\n"
-                     "User-Agent: VADE\r\n"
+                     "User-Agent: Corgicoin\r\n"
                      "Connection: close\r\n"
                      "\r\n";
 
@@ -389,7 +390,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 
             pszGet = "GET /simple/ HTTP/1.1\r\n"
                      "Host: www.showmyip.com\r\n"
-                     "User-Agent: VADE\r\n"
+                     "User-Agent: Corgicoin\r\n"
                      "Connection: close\r\n"
                      "\r\n";
 
@@ -406,7 +407,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 void ThreadGetMyExternalIP(void* parg)
 {
     // Make this thread recognisable as the external IP detection thread
-    RenameThread("VADE-ext-ip");
+    RenameThread("Corgicoin-ext-ip");
 
     CNetAddr addrLocalHost;
     if (GetMyExternalIP(addrLocalHost))
@@ -799,7 +800,7 @@ void SocketSendData(CNode *pnode)
 void ThreadSocketHandler(void* parg)
 {
     // Make this thread recognisable as the networking thread
-    RenameThread("VADE-net");
+    RenameThread("Corgicoin-net");
 
     try
     {
@@ -987,7 +988,7 @@ void ThreadSocketHandler2(void* parg)
                 if (nErr != WSAEWOULDBLOCK)
                     printf("socket error accept failed: %d\n", nErr);
             }
-            else if (nInbound >= GetArg("-maxconnections", 125) - MAX_OUTBOUND_CONNECTIONS)
+            else if (nInbound >= GetArg("-maxconnections", 100) - MAX_OUTBOUND_CONNECTIONS)
             {
                 closesocket(hSocket);
             }
@@ -1132,32 +1133,10 @@ void ThreadSocketHandler2(void* parg)
 
 
 #ifdef USE_UPNP
-void ThreadMapPort(void* parg)
+void ThreadMapPort()
 {
-    // Make this thread recognisable as the UPnP thread
-    RenameThread("VADE-UPnP");
-
-    try
-    {
-        vnThreadsRunning[THREAD_UPNP]++;
-        ThreadMapPort2(parg);
-        vnThreadsRunning[THREAD_UPNP]--;
-    }
-    catch (std::exception& e) {
-        vnThreadsRunning[THREAD_UPNP]--;
-        PrintException(&e, "ThreadMapPort()");
-    } catch (...) {
-        vnThreadsRunning[THREAD_UPNP]--;
-        PrintException(NULL, "ThreadMapPort()");
-    }
-    printf("ThreadMapPort exited\n");
-}
-
-void ThreadMapPort2(void* parg)
-{
-    printf("ThreadMapPort started\n");
-
     std::string port = strprintf("%u", GetListenPort());
+
     const char * multicastif = 0;
     const char * minissdpdpath = 0;
     struct UPNPDev * devlist = 0;
@@ -1166,10 +1145,14 @@ void ThreadMapPort2(void* parg)
 #ifndef UPNPDISCOVER_SUCCESS
     /* miniupnpc 1.5 */
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0);
-#else
+#elif MINIUPNPC_API_VERSION < 14
     /* miniupnpc 1.6 */
     int error = 0;
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
+#else 
+    /* miniupnpc 1.92010730 */
+    int error = 0;
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 2&error);
 #endif
 
     struct UPNPUrls urls;
@@ -1196,7 +1179,7 @@ void ThreadMapPort2(void* parg)
             }
         }
 
-        string strDesc = "VADE " + FormatFullVersion();
+        string strDesc = "Corgicoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -1211,59 +1194,45 @@ void ThreadMapPort2(void* parg)
             printf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
                 port.c_str(), port.c_str(), lanaddr, r, strupnperror(r));
         else
-            printf("UPnP Port Mapping successful.\n");
-        int i = 1;
-        while (true)
+            printf("UPnP Port Mapping successful.\n");;
+
+                MilliSleep(20*60*1000); // Refresh every 20 minutes
+            }
+        }
+        catch (boost::thread_interrupted)
         {
-            if (fShutdown || !fUseUPnP)
-            {
                 r = UPNP_DeletePortMapping(urls.controlURL, data.first.servicetype, port.c_str(), "TCP", 0);
                 printf("UPNP_DeletePortMapping() returned : %d\n", r);
                 freeUPNPDevlist(devlist); devlist = 0;
                 FreeUPNPUrls(&urls);
-                return;
-            }
-            if (i % 600 == 0) // Refresh every 20 minutes
-            {
-#ifndef UPNPDISCOVER_SUCCESS
-                /* miniupnpc 1.5 */
-                r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-                                    port.c_str(), port.c_str(), lanaddr, strDesc.c_str(), "TCP", 0);
-#else
-                /* miniupnpc 1.6 */
-                r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
-                                    port.c_str(), port.c_str(), lanaddr, strDesc.c_str(), "TCP", 0, "0");
-#endif
-
-                if(r!=UPNPCOMMAND_SUCCESS)
-                    printf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
-                        port.c_str(), port.c_str(), lanaddr, r, strupnperror(r));
-                else
-                    printf("UPnP Port Mapping successful.\n");;
-            }
-            MilliSleep(2000);
-            i++;
+                 throw;
         }
     } else {
         printf("No valid UPnP IGDs found\n");
         freeUPNPDevlist(devlist); devlist = 0;
         if (r != 0)
             FreeUPNPUrls(&urls);
-        while (true)
-        {
-            if (fShutdown || !fUseUPnP)
-                return;
-            MilliSleep(2000);
-        }
     }
 }
 
-void MapPort()
+void MapPort(bool fUseUPnP)
 {
-    if (fUseUPnP && vnThreadsRunning[THREAD_UPNP] < 1)
+    static boost::thread* upnp_thread = NULL;
+
+    if (fUseUPnP)
     {
-        if (!NewThread(ThreadMapPort, NULL))
-            printf("Error: ThreadMapPort(ThreadMapPort) failed\n");
+        if (upnp_thread) {
+            upnp_thread->interrupt();
+            upnp_thread->join();
+            delete upnp_thread;
+        }
+        upnp_thread = new boost::thread(boost::bind(&TraceThread<void (*)()>, "upnp", &ThreadMapPort));
+    }
+    else if (upnp_thread) {
+        upnp_thread->interrupt();
+        upnp_thread->join();
+        delete upnp_thread;
+        upnp_thread = NULL;
     }
 }
 #else
@@ -1279,11 +1248,11 @@ void MapPort()
 // The second name should resolve to a list of seed addresses.
 
 static const char *strDNSSeed[][2] = {
-    {"corgi.seed.fuzzbawls.pw", "corgi.seed.fuzzbawls.pw"},
-    {"drew-group.com", "drew-group.com"},
+    {"corgicoin.co.uk", "corgicoin.co.uk"},
+    {"50.245.85.76", "50.245.85.76"},
 };
 
-void ThreadDNSAddressSeed(void* parg)
+void ThreadDNSAddressSeed()
 {
     // Make this thread recognisable as the DNS seeding thread
     RenameThread("VADE-dnsseed");
@@ -1313,35 +1282,30 @@ void ThreadDNSAddressSeed2(void* parg)
     {
         printf("Loading addresses from DNS seeds (could take a while)\n");
 
-        for (unsigned int seed_idx = 0; seed_idx < ARRAYLEN(strDNSSeed); seed_idx++) {
+       BOOST_FOREACH(const CDNSSeedData &seed, vSeeds) {
             if (HaveNameProxy()) {
-                AddOneShot(strDNSSeed[seed_idx][1]);
+                AddOneShot(seed.host);
             } else {
-                vector<CNetAddr> vaddr;
+                vector<CNetAddr> vIPs;
                 vector<CAddress> vAdd;
-                if (LookupHost(strDNSSeed[seed_idx][1], vaddr))
+                if (LookupHost(seed.host.c_str(), vIPs))
                 {
-                    BOOST_FOREACH(CNetAddr& ip, vaddr)
+                    BOOST_FOREACH(CNetAddr& ip, vIPs)
                     {
                         int nOneDay = 24*3600;
-                        CAddress addr = CAddress(CService(ip, GetDefaultPort()));
+                        CAddress addr = CAddress(CService(ip, Params().GetDefaultPort()));
                         addr.nTime = GetTime() - 3*nOneDay - GetRand(4*nOneDay); // use a random age between 3 and 7 days old
                         vAdd.push_back(addr);
                         found++;
                     }
                 }
-                addrman.Add(vAdd, CNetAddr(strDNSSeed[seed_idx][0], true));
+                addrman.Add(vAdd, CNetAddr(seed.name, true));
             }
         }
     }
 
     printf("%d addresses found from DNS seeds\n", found);
 }
-
-unsigned int pnSeed[] =
-{
-    0xfd2c2c52, 0x353545b9,
-};
 
 
 
@@ -1663,8 +1627,7 @@ bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOu
     //
     // Initiate outbound network connection
     //
-    if (fShutdown)
-        return false;
+    boost::this_thread::interruption_point();
     if (!strDest)
         if (IsLocal(addrConnect) ||
             FindNode((CNetAddr)addrConnect) || CNode::IsBanned(addrConnect) ||
@@ -1673,11 +1636,9 @@ bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOu
     if (strDest && FindNode(strDest))
         return false;
 
-    vnThreadsRunning[THREAD_OPENCONNECTIONS]--;
     CNode* pnode = ConnectNode(addrConnect, strDest);
-    vnThreadsRunning[THREAD_OPENCONNECTIONS]++;
-    if (fShutdown)
-        return false;
+    boost::this_thread::interruption_point();
+
     if (!pnode)
         return false;
     if (grantOutbound)
@@ -1689,52 +1650,72 @@ bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOu
     return true;
 }
 
-
-
-
-
-
-
-
-void ThreadMessageHandler(void* parg)
-{
-    // Make this thread recognisable as the message handling thread
-    RenameThread("VADE-msghand");
-
-    try
-    {
-        vnThreadsRunning[THREAD_MESSAGEHANDLER]++;
-        ThreadMessageHandler2(parg);
-        vnThreadsRunning[THREAD_MESSAGEHANDLER]--;
-    }
-    catch (std::exception& e) {
-        vnThreadsRunning[THREAD_MESSAGEHANDLER]--;
-        PrintException(&e, "ThreadMessageHandler()");
-    } catch (...) {
-        vnThreadsRunning[THREAD_MESSAGEHANDLER]--;
-        PrintException(NULL, "ThreadMessageHandler()");
-    }
-    printf("ThreadMessageHandler exited\n");
+// for now, use a very simple selection metric: the node from which we received
+// most recently
+static int64_t NodeSyncScore(const CNode *pnode) {
+    return pnode->nLastRecv;
 }
 
-void ThreadMessageHandler2(void* parg)
+void static StartSync(const vector<CNode*> &vNodes) {
+    CNode *pnodeNewSync = NULL;
+    int64_t nBestScore = 0;
+
+    // fImporting and fReindex are accessed out of cs_main here, but only
+    // as an optimization - they are checked again in SendMessages.
+    if (fReindex)
+        return;
+
+    // Iterate over all nodes
+    BOOST_FOREACH(CNode* pnode, vNodes) {
+        // check preconditions for allowing a sync
+        if (!pnode->fClient && !pnode->fOneShot &&
+            !pnode->fDisconnect && pnode->fSuccessfullyConnected &&
+            (pnode->nStartingHeight > (nBestHeight - 144)) &&
+            (pnode->nVersion < NOBLKS_VERSION_START || pnode->nVersion >= NOBLKS_VERSION_END)) {
+            // if ok, compare node's score with the best so far
+            int64_t nScore = NodeSyncScore(pnode);
+            if (pnodeNewSync == NULL || nScore > nBestScore) {
+                pnodeNewSync = pnode;
+                nBestScore = nScore;
+            }
+        }
+    }
+    // if a new sync candidate was found, start sync!
+    if (pnodeNewSync) {
+        pnodeNewSync->fStartSync = true;
+        pnodeSync = pnodeNewSync;
+    }
+}
+
+
+void ThreadMessageHandler()
 {
-    printf("ThreadMessageHandler started\n");
     SetThreadPriority(THREAD_PRIORITY_BELOW_NORMAL);
-    while (!fShutdown)
+    while (true)
     {
+        bool fHaveSyncNode = false;
+
         vector<CNode*> vNodesCopy;
         {
             LOCK(cs_vNodes);
             vNodesCopy = vNodes;
-            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+            BOOST_FOREACH(CNode* pnode, vNodesCopy) {
                 pnode->AddRef();
+                if (pnode == pnodeSync)
+                    fHaveSyncNode = true;
+            }
         }
+
+        if (!fHaveSyncNode)
+            StartSync(vNodesCopy);
 
         // Poll the connected nodes for messages
         CNode* pnodeTrickle = NULL;
         if (!vNodesCopy.empty())
             pnodeTrickle = vNodesCopy[GetRand(vNodesCopy.size())];
+
+        bool fSleep = true;
+
         BOOST_FOREACH(CNode* pnode, vNodesCopy)
         {
             if (pnode->fDisconnect)
@@ -1744,20 +1725,29 @@ void ThreadMessageHandler2(void* parg)
             {
                 TRY_LOCK(pnode->cs_vRecvMsg, lockRecv);
                 if (lockRecv)
-                    if (!ProcessMessages(pnode))
+                {
+                    if (!g_signals.ProcessMessages(pnode))
                         pnode->CloseSocketDisconnect();
+
+                    if (pnode->nSendSize < SendBufferSize())
+                    {
+                        if (!pnode->vRecvGetData.empty() || (!pnode->vRecvMsg.empty() && pnode->vRecvMsg[0].complete()))
+                        {
+                            fSleep = false;
+                        }
+                    }
+                }
             }
-            if (fShutdown)
-                return;
+
+            boost::this_thread::interruption_point();
 
             // Send messages
             {
                 TRY_LOCK(pnode->cs_vSend, lockSend);
                 if (lockSend)
-                    SendMessages(pnode, pnode == pnodeTrickle);
+                    g_signals.SendMessages(pnode, pnode == pnodeTrickle);
             }
-            if (fShutdown)
-                return;
+            boost::this_thread::interruption_point();
         }
 
         {
@@ -1769,15 +1759,11 @@ void ThreadMessageHandler2(void* parg)
         // Wait and allow messages to bunch up.
         // Reduce vnThreadsRunning so StopNode has permission to exit while
         // we're sleeping, but we must always check fShutdown after doing this.
-        vnThreadsRunning[THREAD_MESSAGEHANDLER]--;
-        MilliSleep(100);
-        if (fRequestShutdown)
-            StartShutdown();
-        vnThreadsRunning[THREAD_MESSAGEHANDLER]++;
-        if (fShutdown)
-            return;
+        if (fSleep)
+            MilliSleep(100);
     }
 }
+
 
 
 
@@ -1937,17 +1923,10 @@ void static Discover()
         freeifaddrs(myaddrs);
     }
 #endif
-
-    // Don't use external IPv4 discovery, when -onlynet="IPv6"
-    if (!IsLimited(NET_IPV4))
-        NewThread(ThreadGetMyExternalIP, NULL);
 }
 
-void StartNode(void* parg)
+void StartNode(boost::thread_group& threadGroup)
 {
-    // Make this thread recognisable as the startup thread
-    RenameThread("VADE-start");
-
     if (semOutbound == NULL) {
         // initialize semaphore
         int nMaxOutbound = min(MAX_OUTBOUND_CONNECTIONS, (int)GetArg("-maxconnections", 125));
@@ -1957,7 +1936,7 @@ void StartNode(void* parg)
     if (pnodeLocalHost == NULL)
         pnodeLocalHost = new CNode(INVALID_SOCKET, CAddress(CService("127.0.0.1", 0), nLocalServices));
 
-    Discover();
+    Discover(threadGroup);
 
     //
     // Start threads
@@ -1966,12 +1945,22 @@ void StartNode(void* parg)
     if (!GetBoolArg("-dnsseed", true))
         printf("DNS seeding disabled\n");
     else
-        if (!NewThread(ThreadDNSAddressSeed, NULL))
-            printf("Error: NewThread(ThreadDNSAddressSeed) failed\n");
+        threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "dnsseed", &ThreadDNSAddressSeed));
 
-    // Map ports with UPnP
-    if (fUseUPnP)
-        MapPort();
+#ifdef USE_UPNP
+    MapPort(GetBoolArg("-upnp", USE_UPNP));
+#endif
+
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "net", &ThreadSocketHandler));
+
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "addcon", &ThreadOpenAddedConnections));
+
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "opencon", &ThreadOpenConnections));
+
+    threadGroup.create_thread(boost::bind(&TraceThread<void (*)()>, "msghand", &ThreadMessageHandler));
+
+    threadGroup.create_thread(boost::bind(&LoopForever<void (*)()>, "dumpaddr", &DumpAddresses, DUMP_ADDRESSES_INTERVAL * 1000));
+}
 
     // Send and receive from sockets, accept connections
     if (!NewThread(ThreadSocketHandler, NULL))
@@ -2004,9 +1993,8 @@ void StartNode(void* parg)
 bool StopNode()
 {
     printf("StopNode()\n");
-    fShutdown = true;
+    MapPort(false);
     nTransactionsUpdated++;
-    int64_t nStart = GetTime();
     if (semOutbound)
         for (int i=0; i<MAX_OUTBOUND_CONNECTIONS; i++)
             semOutbound->post();
