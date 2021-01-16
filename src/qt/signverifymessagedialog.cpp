@@ -27,8 +27,8 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     ui->addressIn_SM->setPlaceholderText(tr("Enter an VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)"));
     ui->signatureOut_SM->setPlaceholderText(tr("Click \"Sign Message\" to generate signature"));
 
-    ui->addressIn_VM->setPlaceholderText(tr("Enter an VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)"));
-    ui->signatureIn_VM->setPlaceholderText(tr("Enter VADE signature"));
+    ui->addressIn_VM->setPlaceholderText(tr("Enter an Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)"));
+    ui->signatureIn_VM->setPlaceholderText(tr("Enter Corgicoin signature"));
 #endif
 
     GUIUtil::setupAddressWidget(ui->addressIn_SM, this);
