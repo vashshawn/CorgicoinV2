@@ -13,8 +13,7 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>
-Copyright (c) 2021 Corgicoin Developers
+        <source>2021 Corgicoin Developers
 Copyright (c) 2014 BlackCoin Developers
 Copyright (c) 2014 Audiocoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
