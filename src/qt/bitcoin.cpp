@@ -137,7 +137,7 @@ int main(int argc, char *argv[])
     {
         // This message can not be translated, as translation is not initialized yet
         // (which not yet possible because lang=XX can be overridden in bitcoin.conf in the data directory)
-        QMessageBox::critical(0, "VADE",
+        QMessageBox::critical(0, "Corgicoin",
                               QString("Error: Specified data directory \"%1\" does not exist.").arg(QString::fromStdString(mapArgs["-datadir"])));
         return 1;
     }
@@ -145,12 +145,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    app.setOrganizationName("VADE");
+    app.setOrganizationName("Corgicoin");
     //XXX app.setOrganizationDomain("");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        app.setApplicationName("VADE-QT-testnet");
+        app.setApplicationName("Corgicoin-QT-testnet");
     else
-        app.setApplicationName("VADE-QT");
+        app.setApplicationName("Corgicoin-QT");
 
     // ... then GUI settings:
     OptionsModel optionsModel;

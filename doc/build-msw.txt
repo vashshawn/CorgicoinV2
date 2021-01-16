@@ -1,5 +1,4 @@
-Copyright (c) 2017 VADE Developers
-Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014-2021 Corgicoin Developers
 Copyright (c) 2014 BlackCoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
 Copyright (c) 2011-2012 PPCoin Developers
@@ -13,7 +12,7 @@ cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP
 software written by Thomas Bernard.
 
 
-See readme-qt.rst for instructions on building VADE QT, the
+See readme-qt.rst for instructions on building Corgicoin QT, the
 graphical user interface.
 
 WINDOWS BUILD NOTES
@@ -82,9 +81,9 @@ make -f Makefile.mingw
 mkdir miniupnpc
 cp *.h miniupnpc/
 
-VADE
+Corgicoin
 -------
 DOS prompt:
-cd \VADE\src
+cd \Corgicoin\src
 mingw32-make -f makefile.mingw
-strip VADEd.exe
+strip Corgicoind.exe

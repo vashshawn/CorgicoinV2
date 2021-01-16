@@ -1,5 +1,5 @@
 ---
-name: "VADE-deps"
+name: "Corgicoin-deps"
 suites:
 - "trusty"
 architectures:
@@ -102,4 +102,4 @@ script: |
   done
   #
   cd $STAGING
-  find include lib | sort | tar --no-recursion -cJf $OUTDIR/VADE-deps-linux${GBUILD_BITS}-gitian.tar.xz -T -
+  find include lib | sort | tar --no-recursion -cJf $OUTDIR/Corgicoin-deps-linux${GBUILD_BITS}-gitian.tar.xz -T -

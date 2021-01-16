@@ -1,7 +1,7 @@
 src/*.exe
-src/VADE
-src/VADEd
-src/test_VADE
+src/Corgicoin
+src/Corgicoind
+src/test_Corgicoin
 .*.swp
 *.*~*
 *.bak
@@ -13,12 +13,12 @@ src/test_VADE
 
 # Compilation and Qt preprocessor part
 *.qm
-VADE-QT
-VADE-QT.app
+Corgicoin-QT
+Corgicoin-QT.app
 
 # Unit-tests
 Makefile.test
-VADE-QT_test
+Corgicoin-QT_test
 
 # Resources cpp
 qrc_*.cpp

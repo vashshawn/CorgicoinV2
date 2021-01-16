@@ -1,23 +1,23 @@
 
-VADE Official Development Repo
+Corgicoin Official Development Repo
 ==================================
 
-### What is VADE?
-VADE ( Peer-to-Peer Coin ) is the first [cryptocurrency](https://en.wikipedia.org/wiki/Cryptocurrency) design introducing proof-of-stake consensus as a security model, with a combined [proof-of-stake](https://en.wikipedia.org/wiki/Proof-of-stake)/[proof-of-work](https://en.wikipedia.org/wiki/Proof-of-work_system) minting system. VADE is based on [Bitcoin](https://bitcoin.org), while introducing many important innovations to cryptocurrency field including new security model, energy efficiency, better minting model and more adaptive response to rapid change in network computation power.
+### What is Corgicoin?
+Corgicoin ( Peer-to-Peer Coin ) is the first [cryptocurrency](https://en.wikipedia.org/wiki/Cryptocurrency) design introducing proof-of-stake consensus as a security model, with a combined [proof-of-stake](https://en.wikipedia.org/wiki/Proof-of-stake)/[proof-of-work](https://en.wikipedia.org/wiki/Proof-of-work_system) minting system. Corgicoin is based on [Bitcoin](https://bitcoin.org), while introducing many important innovations to cryptocurrency field including new security model, energy efficiency, better minting model and more adaptive response to rapid change in network computation power.
 
 ### VADE Resources
 * Client and Source:
-    * [Client Binaries](https://github.com/anodec/VADE/releases)
-    * [Source Code](https://github.com/anodec/VADE)
+    * [Client Binaries](https://github.com/Magicone111/Corgicoin/releases)
+    * [Source Code](https://github.com/Magicone111/Corgicoin)
 * Prices: 
     * [CoinMarketCap](https://coinmarketcap.com/currencies/corgicoin/)
 * Exchanges: 
-    * [Cryptopia](https://www.cryptopia.co.nz/Exchange/?market=CORG_BTC)
+    * -
 * Community: 
     * [Discord](https://discord.gg/wqcASqq)
 * Resources: 
     * [Bitcointalk](https://bitcointalk.org/index.php?topic=1373179.0)
-    * [Wiki and Installation guides](https://github.com/anodec/VADE/wiki)
+    * [Wiki and Installation guides](https://github.com/Magicone111/Corgicoin/wiki)
 
 Testing
 -------

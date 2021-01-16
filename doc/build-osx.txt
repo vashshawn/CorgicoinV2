@@ -1,5 +1,4 @@
-Copyright (c) 2017 VADE Developers
-Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014-2021 Corgicoin Developers
 Copyright (c) 2014 BlackCoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
 Copyright (c) 2011-2012 PPCoin Developers
@@ -13,7 +12,7 @@ software written by Eric Young (eay@cryptsoft.com) and UPnP software written by
 Thomas Bernard.
 
 
-Mac OS X VADEd build instructions
+Mac OS X Corgicoind build instructions
 Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
@@ -47,12 +46,12 @@ sudo port install qrencode
 
 4.  Now you should be able to build VADEd:
 
-cd VADE/src
+cd Corgicoin/src
 make -f makefile.osx
 
 Run:
-  ./VADEd --help  # for a list of command-line options.
+  ./Corgicoind --help  # for a list of command-line options.
 Run
-  ./VADEd -daemon # to start the VADE daemon.
+  ./Corgicoind -daemon # to start the VADE daemon.
 Run
-  ./VADEd help # When the daemon is running, to get a list of RPC commands
+  ./Corgicoind help # When the daemon is running, to get a list of RPC commands

@@ -1,5 +1,5 @@
 ---
-name: "VADE"
+name: "Corgicoin"
 suites:
 - "trusty"
 architectures:
@@ -21,11 +21,11 @@ packages:
 - "genisoimage"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/anodec/VADE.git"
-  "dir": "VADE"
+- "url": "https://github.com/Magicone111/Corgicoin.git"
+  "dir": "Corgicoin"
 files:
 - "qt-osx-5.5.0-gitian.tar.xz"
-- "VADE-deps-osx-gitian.zip"
+- "Corgicoin-deps-osx-gitian.zip"
 - "osxcross.tar.xz"
 script: |
   # Defines
@@ -51,20 +51,20 @@ script: |
   export QT_RCC_TEST=1
   mkdir -p $BUILDDIR $BINDIR $DEPSDIR
   cd $DEPSDIR
-  unzip -o $BUILDDIR/VADE-deps-osx-gitian.zip
+  unzip -o $BUILDDIR/Corgicoin-deps-osx-gitian.zip
   tar xf $BUILDDIR/osxcross.tar.xz
   mkdir -p $HOME/install
   cd $HOME/install
   tar xf $BUILDDIR/qt-osx-5.5.0-gitian.tar.xz
   #
-  cd $BUILDDIR/VADE
+  cd $BUILDDIR/Corgicoin
   mkdir -p $OUTDIR/src
   git archive HEAD | tar -x -C $OUTDIR/src
   cp $OUTDIR/src/doc/README $OUTDIR/readme.txt
   cp $OUTDIR/src/COPYING $OUTDIR/COPYING.txt
   #
   #cd src
-  #make -f makefile.linux-mingw HOST="$HOST" DEPSDIR="$DEPSDIR" CURDIR="$BUILDDIR/VADE/src" STATIC=1 $MAKEOPTS USE_UPNP=1 BOOST_LIB_SUFFIX="-mt-s" DEBUGFLAGS=
+  #make -f makefile.linux-mingw HOST="$HOST" DEPSDIR="$DEPSDIR" CURDIR="$BUILDDIR/Corgicoin/src" STATIC=1 $MAKEOPTS USE_UPNP=1 BOOST_LIB_SUFFIX="-mt-s" DEBUGFLAGS=
   #cp VADEd.exe $BINDIR/
   #cd ..
   #
@@ -76,13 +76,13 @@ script: |
   export INSTALLNAMETOOL=${HOST}-install_name_tool
   export STRIP=${HOST}-strip
   chmod +x contrib/macdeploy/macdeployqtplus
-  OTOOL=${HOST}-otool INSTALLNAMETOOL=${HOST}-install_name_tool STRIP=${HOST}-strip contrib/macdeploy/macdeployqtplus VADE.app
+  OTOOL=${HOST}-otool INSTALLNAMETOOL=${HOST}-install_name_tool STRIP=${HOST}-strip contrib/macdeploy/macdeployqtplus Corgicoin.app
   mkdir -p  dist/.background
   install contrib/macdeploy/background.png dist/.background
   install contrib/macdeploy/DS_Store dist/.DS_Store
   cd dist
   ln -sf /Applications Applications
   cd ..
-  genisoimage -no-cache-inodes -l -probe -V "VADE" -no-pad -r -apple -o VADE.tmp.dmg dist
-  dmg dmg VADE.tmp.dmg $OUTDIR/VADE.dmg
+  genisoimage -no-cache-inodes -l -probe -V "Corgicoin" -no-pad -r -apple -o corgicoin.dmg dist
+  dmg dmg Corgicoin.tmp.dmg $OUTDIR/Corgicoin.dmg
   #

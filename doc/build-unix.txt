@@ -1,5 +1,4 @@
-Copyright (c) 2017 VADE Developers
-Copyright (c) 2014-2017 Corgicoin Developers
+Copyright (c) 2014-2021 Corgicoin Developers
 Copyright (c) 2014 BlackCoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
 Copyright (c) 2011-2012 PPCoin Developers
@@ -20,9 +19,9 @@ To Build
 --------
 
 cd src/
-make -f makefile.unix            # Headless VADE
+make -f makefile.unix            # Headless Corgicoin
 
-See readme-qt.rst for instructions on building VADE QT,
+See readme-qt.rst for instructions on building Corgicoin-QT,
 the graphical VADE.
 
 Dependencies
@@ -82,7 +81,7 @@ Dependency Build Instructions: Gentoo
 emerge -av1 --noreplace boost openssl sys-libs/db
 
 Take the following steps to build (no UPnP support):
- cd ${VADE_DIR}/src
+ cd ${Corgicoin_DIR}/src
  make -f makefile.unix USE_UPNP=
  strip VADEd
 
@@ -98,9 +97,6 @@ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
 sudo apt-get update
 sudo apt-get install gcc-4.9
 sudo apt-get install g++-4.9
-
-
-
 
 
 miniupnpc
@@ -153,7 +149,7 @@ exploit even if a vulnerability is found, you can take the following measures:
     make -f makefile.unix ... -e PIE=1
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
-    scanelf -e ./VADE
+    scanelf -e ./Corgicoin
 
     The output should contain:
      TYPE
@@ -167,8 +163,8 @@ exploit even if a vulnerability is found, you can take the following measures:
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    scanelf -e ./VADE
-
+    scanelf -e ./Corgicoin
+    
     the output should contain:
     STK/REL/PTL
     RW- R-- RW-
