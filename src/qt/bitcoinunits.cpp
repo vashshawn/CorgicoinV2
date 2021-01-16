@@ -46,8 +46,8 @@ QString BitcoinUnits::description(int unit)
     switch(unit)
     {
     case BTC: return QString("/qt/bitcoinunits.cpp");
-    case mBTC: return QString("Milli-VADE (1 / 1,000)");
-    case uBTC: return QString("Micro-VADE (1 / 1,000,000)");
+    case mBTC: return QString("Milli-CORG (1 / 1,000)");
+    case uBTC: return QString("Micro-CORG (1 / 1,000,000)");
     default: return QString("???");
     }
 }
