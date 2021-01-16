@@ -3,19 +3,19 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About VADE</source>
+        <source>About Corgicoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;VADE&lt;/b&gt; version</source>
+        <source>&lt;b&gt;Corgicoin&lt;/b&gt; version</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright (c) 2017 VADE Developers
-Copyright (c) 2014-2017 Corgicoin Developers
+        <source>Copyright (c) 2021 Corgicoin Developers
 Copyright (c) 2014 BlackCoin Developers
+Copyright (c) 2014 Audiocoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
 Copyright (c) 2011-2012 PPCoin Developers
 Copyright (c) 2009-2014 Bitcoin Developers</source>
@@ -42,17 +42,17 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+22"/>
         <source>Double-click to edit address or label</source>
-        <translation>Haga doble clic para editar el domicilio o la etiqueta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+27"/>
         <source>Create a new address</source>
-        <translation>Crear una dirección nueva</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+14"/>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>Copiar el domicilio seleccionado al portapapeles del sistema</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-11"/>
@@ -61,7 +61,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your VADE addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <source>These are your Corgicoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -76,7 +76,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a VADE address</source>
+        <source>Sign a message to prove you own a Corgicoin address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -91,7 +91,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified VADE address</source>
+        <source>Verify a message to ensure it was signed with a specified Corgicoin address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -102,7 +102,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+14"/>
         <source>&amp;Delete</source>
-        <translation>&amp;Borrar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+65"/>
@@ -122,7 +122,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Comma separated file (*.csv)</source>
-        <translation>Archivo separado por comas (*.CSV)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+13"/>
@@ -140,17 +140,17 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../addresstablemodel.cpp" line="+144"/>
         <source>Label</source>
-        <translation>Etiqueta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+0"/>
         <source>Address</source>
-        <translation>Domicilio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+36"/>
         <source>(no label)</source>
-        <translation>(sin etiqueta)</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -163,17 +163,17 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+21"/>
         <source>Enter passphrase</source>
-        <translation>Ingrese la contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+14"/>
         <source>New passphrase</source>
-        <translation>Nueva contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+14"/>
         <source>Repeat new passphrase</source>
-        <translation>Repita la nueva contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+33"/>
@@ -188,47 +188,47 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../askpassphrasedialog.cpp" line="+35"/>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Ingrese la nueva contraseña a la cartera&lt;br/&gt;Por favor use una contraseña de&lt;b&gt;10 o más caracteres aleatorios&lt;/b&gt; o &lt;b&gt;ocho o más palabras&lt;/b&gt;.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Encrypt wallet</source>
-        <translation>Cartera encriptada.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+7"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Esta operación necesita la contraseña de su cartera para desbloquear su cartera.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
         <source>Unlock wallet</source>
-        <translation>Desbloquear cartera.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+3"/>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Esta operación necesita la contraseña de su cartera para desencriptar su cartera.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
         <source>Decrypt wallet</source>
-        <translation>Desencriptar la cartera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+3"/>
         <source>Change passphrase</source>
-        <translation>Cambiar contraseña</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Ingrese la antugüa y nueva contraseña de la cartera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+46"/>
         <source>Confirm wallet encryption</source>
-        <translation>Confirmar la encriptación de cartera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -255,11 +255,11 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-133"/>
         <location line="+60"/>
         <source>Wallet encrypted</source>
-        <translation>Cartera encriptada</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-58"/>
-        <source>VADE will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
+        <source>Corgicoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -268,35 +268,35 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="+44"/>
         <location line="+6"/>
         <source>Wallet encryption failed</source>
-        <translation>La encriptación de la cartera falló</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-56"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>La encriptación de la cartera falló debido a un error interno. Su cartera no fue encriptada.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+7"/>
         <location line="+50"/>
         <source>The supplied passphrases do not match.</source>
-        <translation>Las contraseñas dadas no coinciden</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-38"/>
         <source>Wallet unlock failed</source>
-        <translation>El desbloqueo de la cartera Fallo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <location line="+12"/>
         <location line="+19"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>La contraseña ingresada para la des encriptación de la cartera es incorrecto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-20"/>
         <source>Wallet decryption failed</source>
-        <translation>La desencriptación de la cartera fallo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+14"/>
@@ -314,27 +314,27 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+242"/>
         <source>Synchronizing with network...</source>
-        <translation>Sincronizando con la red...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-308"/>
         <source>&amp;Overview</source>
-        <translation>&amp;Vista previa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Show general overview of wallet</source>
-        <translation>Mostrar la vista previa general de la cartera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+17"/>
         <source>&amp;Transactions</source>
-        <translation>&amp;Transacciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Browse transaction history</source>
-        <translation>Explorar el historial de transacciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
@@ -364,16 +364,16 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+35"/>
         <source>E&amp;xit</source>
-        <translation>S&amp;alir</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Quit application</source>
-        <translation>Salir de la aplicación</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about VADE</source>
+        <source>Show information about Corgicoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -389,7 +389,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+2"/>
         <source>&amp;Options...</source>
-        <translation>&amp;Opciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
@@ -409,7 +409,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message numerus="yes">
         <location line="+250"/>
         <source>~%n block(s) remaining</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+6"/>
@@ -423,12 +423,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a VADE address</source>
+        <source>Send coins to a Corgicoin address</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for VADE</source>
+        <source>Modify configuration options for Corgicoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -449,7 +449,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+2"/>
         <source>Change the passphrase used for wallet encryption</source>
-        <translation>Cambiar la contraseña usada para la encriptación de la cartera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
@@ -478,7 +478,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About VADE</source>
+        <source>&amp;About Corgicoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -504,22 +504,22 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+34"/>
         <source>&amp;File</source>
-        <translation>&amp;Archivo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+8"/>
         <source>&amp;Settings</source>
-        <translation>&amp;Configuraciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+8"/>
         <source>&amp;Help</source>
-        <translation>&amp;Ayuda</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+9"/>
         <source>Tabs toolbar</source>
-        <translation>Pestañas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+8"/>
@@ -540,8 +540,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to VADE network</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <source>%n active connection(s) to Corgicoin network</source>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+40"/>
@@ -576,7 +576,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message numerus="yes">
         <location line="-403"/>
         <source>%n second(s) ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="-284"/>
@@ -586,27 +586,27 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message numerus="yes">
         <location line="+288"/>
         <source>%n minute(s) ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n hour(s) ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n day(s) ago</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Up to date</source>
-        <translation>Actualizado al dia </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+7"/>
         <source>Catching up...</source>
-        <translation>Resiviendo...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
@@ -626,12 +626,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+27"/>
         <source>Sent transaction</source>
-        <translation>Enviar Transacción</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Incoming transaction</source>
-        <translation>Transacción entrante</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -651,18 +651,18 @@ Address: %4
     <message>
         <location line="-15"/>
         <location line="+15"/>
-        <source>URI can not be parsed! This can be caused by an invalid VADE address or malformed URI parameters.</source>
+        <source>URI can not be parsed! This can be caused by an invalid Corgicoin address or malformed URI parameters.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+18"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>La cartera esta &lt;b&gt;encriptada&lt;/b&gt; y &lt;b&gt;desbloqueada&lt;/b&gt; actualmente </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>La cartera esta &lt;b&gt;encriptada&lt;/b&gt; y &lt;b&gt;bloqueada&lt;/b&gt; actualmente </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+25"/>
@@ -687,22 +687,22 @@ Address: %4
     <message numerus="yes">
         <location line="+76"/>
         <source>%n second(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n minute(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n hour(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message numerus="yes">
         <location line="+4"/>
         <source>%n day(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+18"/>
@@ -711,7 +711,7 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. VADE can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Corgicoin can no longer continue safely and will quit.</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -738,22 +738,22 @@ Address: %4
     <message>
         <location line="+32"/>
         <source>Bytes:</source>
-        <translation>Bytes:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+48"/>
         <source>Amount:</source>
-        <translation>Monto:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+32"/>
         <source>Priority:</source>
-        <translation>Prioridad:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+48"/>
         <source>Fee:</source>
-        <translation>Cuota:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+35"/>
@@ -793,7 +793,7 @@ Address: %4
     <message>
         <location line="+45"/>
         <source>Amount</source>
-        <translation>Monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
@@ -803,12 +803,12 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Address</source>
-        <translation>Domicilio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
         <source>Date</source>
-        <translation>Fecha</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
@@ -818,7 +818,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Confirmed</source>
-        <translation>Confirmado </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
@@ -828,18 +828,18 @@ Address: %4
     <message>
         <location filename="../coincontroldialog.cpp" line="-515"/>
         <source>Copy address</source>
-        <translation>Copiar dirección </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy label</source>
-        <translation>Copiar capa </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <location line="+26"/>
         <source>Copy amount</source>
-        <translation>copiar monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-25"/>
@@ -849,27 +849,27 @@ Address: %4
     <message>
         <location line="+24"/>
         <source>Copy quantity</source>
-        <translation>copiar cantidad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Copy fee</source>
-        <translation>copiar cuota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy after fee</source>
-        <translation>copiar despues de cuota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy bytes</source>
-        <translation>copiar bytes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy priority</source>
-        <translation>copiar prioridad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -879,7 +879,7 @@ Address: %4
     <message>
         <location line="+1"/>
         <source>Copy change</source>
-        <translation>copiar cambio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+317"/>
@@ -964,7 +964,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+37"/>
         <location line="+66"/>
         <source>(no label)</source>
-        <translation>(sin etiqueta)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-9"/>
@@ -982,12 +982,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../forms/editaddressdialog.ui" line="+14"/>
         <source>Edit Address</source>
-        <translation>Editar dirección</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+11"/>
         <source>&amp;Label</source>
-        <translation>&amp;Etiqueta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
@@ -997,7 +997,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+7"/>
         <source>&amp;Address</source>
-        <translation>&amp;Dirección</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
@@ -1007,27 +1007,27 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../editaddressdialog.cpp" line="+20"/>
         <source>New receiving address</source>
-        <translation>Nueva dirección de entregas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
         <source>New sending address</source>
-        <translation>Nueva dirección de entregas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+3"/>
         <source>Edit receiving address</source>
-        <translation>Editar dirección de entregas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
         <source>Edit sending address</source>
-        <translation>Editar dirección de envios</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+76"/>
         <source>The entered address &quot;%1&quot; is already in the address book.</source>
-        <translation>El domicilio ingresado &quot;%1&quot; ya existe en la libreta de direcciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-5"/>
@@ -1037,12 +1037,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+10"/>
         <source>Could not unlock wallet.</source>
-        <translation>No se puede desbloquear la cartera</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
         <source>New key generation failed.</source>
-        <translation>La generación de la nueva clave fallo</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1050,7 +1050,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+420"/>
         <location line="+12"/>
-        <source>VADE-QT</source>
+        <source>VADE-Qt</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1094,7 +1094,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../forms/optionsdialog.ui" line="+14"/>
         <source>Options</source>
-        <translation>Opciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+16"/>
@@ -1123,7 +1123,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start VADE after logging in to the system.</source>
+        <source>Automatically start Corgicoin after logging in to the system.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1158,7 +1158,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the VADE network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <source>Connect to the Corgicoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1233,7 +1233,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting VADE.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting Corgicoin.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1248,7 +1248,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show VADE addresses in the transaction list or not.</source>
+        <source>Whether to show Corgicoin addresses in the transaction list or not.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1309,7 +1309,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../forms/overviewpage.ui" line="+14"/>
         <source>Form</source>
-        <translation>Formulario</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+33"/>
@@ -1365,7 +1365,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+46"/>
         <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation>&lt;b&gt;Transacciones recientes&lt;/b&gt;</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-108"/>
@@ -1530,7 +1530,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the VADE-QT help message to get a list with possible VADE command-line options.</source>
+        <source>Show the Corgicoin-Qt help message to get a list with possible VADE command-line options.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1565,7 +1565,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the VADE debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the Corgicoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1601,7 +1601,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+5"/>
         <location line="+5"/>
         <source>Send Coins</source>
-        <translation>Mandar monedas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+76"/>
@@ -1637,12 +1637,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-19"/>
         <source>Bytes:</source>
-        <translation>Bytes:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+51"/>
         <source>Amount:</source>
-        <translation>Monto:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+22"/>
@@ -1655,7 +1655,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-191"/>
         <source>Priority:</source>
-        <translation>Prioridad:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+19"/>
@@ -1665,7 +1665,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+32"/>
         <source>Fee:</source>
-        <translation>Cuota:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+35"/>
@@ -1695,7 +1695,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+106"/>
         <source>Send to multiple recipients at once</source>
-        <translation>Enviar a múltiples receptores a la vez</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+3"/>
@@ -1715,7 +1715,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+28"/>
         <source>Balance:</source>
-        <translation>Saldo:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+16"/>
@@ -1725,7 +1725,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+31"/>
         <source>Confirm the send action</source>
-        <translation>Confirme la acción de enviar</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+3"/>
@@ -1740,32 +1740,32 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+15"/>
         <source>Copy quantity</source>
-        <translation>copiar cantidad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy amount</source>
-        <translation>copiar monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy fee</source>
-        <translation>copiar cuota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy after fee</source>
-        <translation>copiar despues de cuota</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy bytes</source>
-        <translation>copiar bytes</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy priority</source>
-        <translation>copiar prioridad</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -1775,7 +1775,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+1"/>
         <source>Copy change</source>
-        <translation>copiar cambio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+86"/>
@@ -1785,7 +1785,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+5"/>
         <source>Confirm send coins</source>
-        <translation>Confirme para mandar monedas</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -1805,7 +1805,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+5"/>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>El monto a pagar debe ser mayor a 0</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+5"/>
@@ -1834,13 +1834,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid VADE address</source>
+        <source>WARNING: Invalid Corgicoin address</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+13"/>
         <source>(no label)</source>
-        <translation>(sin etiqueta)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
@@ -1858,23 +1858,23 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+15"/>
         <source>A&amp;mount:</source>
-        <translation>M&amp;onto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+13"/>
         <source>Pay &amp;To:</source>
-        <translation>Pagar &amp;a:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+24"/>
         <location filename="../sendcoinsentry.cpp" line="+25"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Ingrese una etiqueta para esta dirección para agregarlo en su libreta de direcciones.</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+9"/>
         <source>&amp;Label:</source>
-        <translation>&amp;Etiqueta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+18"/>
@@ -1894,7 +1894,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+7"/>
         <source>Paste address from clipboard</source>
-        <translation>Pegar dirección  del portapapeles</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
@@ -1908,7 +1908,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <source>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
         <translation type="unfinished"/>
     </message>
 </context>
@@ -1950,7 +1950,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-193"/>
         <source>Paste address from clipboard</source>
-        <translation>Pegar dirección  del portapapeles</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+10"/>
@@ -1969,7 +1969,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this VADE address</source>
+        <source>Sign the message to prove you own this Corgicoin address</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2012,7 +2012,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <source>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2097,12 +2097,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../transactiondesc.cpp" line="+19"/>
         <source>Open until %1</source>
-        <translation>Abrir hasta %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <location line="-2"/>
         <source>Open for %n block(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2117,12 +2117,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+2"/>
         <source>%1/unconfirmed</source>
-        <translation>%1/No confirmado</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>%1 confirmations</source>
-        <translation>%1 confirmaciones</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+18"/>
@@ -2132,12 +2132,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message numerus="yes">
         <location line="+7"/>
         <source>, broadcast through %n node(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Date</source>
-        <translation>Fecha</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+7"/>
@@ -2185,7 +2185,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message numerus="yes">
         <location line="-102"/>
         <source>matures in %n more block(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2248,7 +2248,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+23"/>
         <source>Amount</source>
-        <translation>Monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -2263,12 +2263,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="-211"/>
         <source>, has not been successfully broadcast yet</source>
-        <translation>, no ha sido transmitido aun</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+35"/>
         <source>unknown</source>
-        <translation>desconocido</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2276,12 +2276,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../forms/transactiondescdialog.ui" line="+14"/>
         <source>Transaction details</source>
-        <translation>Detalles de la transacción</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+6"/>
         <source>This pane shows a detailed description of the transaction</source>
-        <translation>Este panel muestras una descripción detallada de la transacción</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2289,37 +2289,37 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../transactiontablemodel.cpp" line="+226"/>
         <source>Date</source>
-        <translation>Fecha</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+0"/>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+0"/>
         <source>Address</source>
-        <translation>Domicilio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+0"/>
         <source>Amount</source>
-        <translation>Monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+60"/>
         <source>Open until %1</source>
-        <translation>Abrir hasta %1</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+12"/>
         <source>Confirmed (%1 confirmations)</source>
-        <translation>Confimado (%1 confirmaciones)</translation>
+        <translation type="unfinished"/>
     </message>
     <message numerus="yes">
         <location line="-15"/>
         <source>Open for %n more block(s)</source>
-        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform></translation>
+        <translation type="unfinished"><numerusform></numerusform><numerusform></numerusform><numerusform></numerusform></translation>
     </message>
     <message>
         <location line="+6"/>
@@ -2349,17 +2349,17 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+3"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Este bloque no fue recibido por ningun nodo y probablemente no fue aceptado !</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+3"/>
         <source>Generated but not accepted</source>
-        <translation>Generado pero no aprovado</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+42"/>
         <source>Received with</source>
-        <translation>Recivido con</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
@@ -2369,22 +2369,22 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+3"/>
         <source>Sent to</source>
-        <translation>Enviar a</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Payment to yourself</source>
-        <translation>Pagar a si mismo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Mined</source>
-        <translation>Minado</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+38"/>
         <source>(n/a)</source>
-        <translation>(n/a)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+190"/>
@@ -2394,22 +2394,22 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+2"/>
         <source>Date and time that the transaction was received.</source>
-        <translation>Fecha y hora en que la transacción fue recibida </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Type of transaction.</source>
-        <translation>Escriba una transacción</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Destination address of transaction.</source>
-        <translation>Direccion del destinatario de la transacción</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Amount removed from or added to balance.</source>
-        <translation>Cantidad removida del saldo o agregada </translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2418,32 +2418,32 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location filename="../transactionview.cpp" line="+55"/>
         <location line="+16"/>
         <source>All</source>
-        <translation>Todo</translation>
+        <translation>Sve</translation>
     </message>
     <message>
         <location line="-15"/>
         <source>Today</source>
-        <translation>Hoy</translation>
+        <translation>Danas</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This week</source>
-        <translation>Esta semana </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>This month</source>
-        <translation>Este mes </translation>
+        <translation>Ovaj mjesec</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Last month</source>
-        <translation>El mes pasado </translation>
+        <translation>Prošli mjesec</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This year</source>
-        <translation>Este año</translation>
+        <translation>Ove godine</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2453,52 +2453,52 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+11"/>
         <source>Received with</source>
-        <translation>Recivido con</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>Sent to</source>
-        <translation>Enviar a</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+2"/>
         <source>To yourself</source>
-        <translation>Para ti mismo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Mined</source>
-        <translation>Minado </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Other</source>
-        <translation>Otro</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+7"/>
         <source>Enter address or label to search</source>
-        <translation>Ingrese dirección o capa a buscar </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+7"/>
         <source>Min amount</source>
-        <translation>Monto minimo </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+34"/>
         <source>Copy address</source>
-        <translation>Copiar dirección </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy label</source>
-        <translation>Copiar capa </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy amount</source>
-        <translation>copiar monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -2508,7 +2508,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+1"/>
         <source>Edit label</source>
-        <translation>Editar capa </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -2523,42 +2523,42 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+1"/>
         <source>Comma separated file (*.csv)</source>
-        <translation>Arhchivo separado por comas (*.CSV)</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+8"/>
         <source>Confirmed</source>
-        <translation>Confirmado </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Date</source>
-        <translation>Fecha</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Type</source>
-        <translation>Tipo</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Label</source>
-        <translation>Etiqueta</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Address</source>
-        <translation>Domicilio</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>Amount</source>
-        <translation>Monto</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>ID</source>
-        <translation>ID</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+4"/>
@@ -2578,7 +2578,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+8"/>
         <source>to</source>
-        <translation>Para</translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -2599,17 +2599,17 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+1"/>
         <source>Usage:</source>
-        <translation>Uso:</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or VADEd</source>
+        <source>Send command to -server or Corgicoind</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
         <source>List commands</source>
-        <translation>Lista de comandos</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
@@ -2623,12 +2623,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: VADE.conf)</source>
+        <source>Specify configuration file (default: Corgicoin.conf)</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: VADEd.pid)</source>
+        <source>Specify pid file (default: Corgicoind.pid)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2653,7 +2653,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Listen for connections on &lt;port&gt; (default: 51737 or testnet: 51997)</source>
+        <source>Listen for connections on &lt;port&gt; (default: 29092 or testnet: 51997)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2967,13 +2967,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=VADErpc
+rpcuser=Corgicoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;Corgicoin Alert&quot; litedoge111@gmail.com
 </source>
         <translation type="unfinished"/>
     </message>
@@ -3099,12 +3099,12 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  VADE is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s.  Corgicoin is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="-98"/>
-        <source>VADE</source>
+        <source>Corgicoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3125,7 +3125,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     <message>
         <location line="+122"/>
         <source>Loading addresses...</source>
-        <translation>Cargando direcciones...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-15"/>
@@ -3139,12 +3139,12 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+4"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of VADE</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Corgicoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart VADE to complete</source>
+        <source>Wallet needed to be rewritten: restart Corgicoin to complete</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3205,7 +3205,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     <message>
         <location line="-34"/>
         <source>Loading block index...</source>
-        <translation>Cargando indice de bloques... </translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-103"/>
@@ -3214,7 +3214,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. VADE is probably already running.</source>
+        <source>Unable to bind to %s on this computer. Corgicoin is probably already running.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -3230,7 +3230,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     <message>
         <location line="+25"/>
         <source>Loading wallet...</source>
-        <translation>Cargando billetera...</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="+8"/>
@@ -3255,7 +3255,7 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     <message>
         <location line="+5"/>
         <source>Done loading</source>
-        <translation>Carga completa</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location line="-167"/>
