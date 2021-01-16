@@ -2,7 +2,7 @@
 #define QTIPCSERVER_H
 
 // Define VADE-QT message queue name
-#define BITCOINURI_QUEUE_NAME "VADEURI"
+#define BITCOINURI_QUEUE_NAME "CorgicoinURI"
 
 void ipcScanRelay(int argc, char *argv[]);
 void ipcInit(int argc, char *argv[]);
