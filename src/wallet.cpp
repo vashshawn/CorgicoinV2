@@ -13,16 +13,10 @@
 #include "coincontrol.h"
 #include <boost/algorithm/string/replace.hpp>
 
-#include "main.h"
-
-
 using namespace std;
 
-// The following split & combine thresholds are important to security
-// Should not be adjusted if you don't understand the consequences
-unsigned int nStakeSplitAge = 1 * 24 * 60 * 60; // (60 Hours) If you find a POS block with coins aged less than this, it assumes you are staking well over the nStakeCombineThreshold and are finding blocks too quickly (
-// ( probably have a very high value compared to the network). It will split the payout back to you into two blocks, to give other people a better chance to stake.
-int64_t nStakeCombineThreshold = 1000 * COIN;   //When appending coins to submit as a POS block, no further coins are added if this total is achieved
+unsigned int nStakeSplitAge = 1 * 24 * 60 * 60;
+int64_t nStakeCombineThreshold = 1000 * COIN;
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -44,17 +38,13 @@ CPubKey CWallet::GenerateNewKey()
     bool fCompressed = CanSupportFeature(FEATURE_COMPRPUBKEY); // default to compressed public keys if we want 0.6.0 wallets
 
     RandAddSeedPerfmon();
-    // CKey key;
-    // key.MakeNewKey(fCompressed);
-    
-    CKey secret;
-    secret.MakeNewKey(fCompressed);
+    CKey key;
+    key.MakeNewKey(fCompressed);
 
     // Compressed public keys were introduced in version 0.6.0
     if (fCompressed)
         SetMinVersion(FEATURE_COMPRPUBKEY);
-    
-    // CPubKey pubkey = key.GetPubKey();
+
     CPubKey pubkey = key.GetPubKey();
 
     // Create new metadata
@@ -62,32 +52,24 @@ CPubKey CWallet::GenerateNewKey()
     mapKeyMetadata[pubkey.GetID()] = CKeyMetadata(nCreationTime);
     if (!nTimeFirstKey || nCreationTime < nTimeFirstKey)
         nTimeFirstKey = nCreationTime;
-    
-    // if (!AddKey(key))
+
     if (!AddKey(key))
         throw std::runtime_error("CWallet::GenerateNewKey() : AddKey failed");
-    // return key.GetPubKey();
-    return pubkey;
+    return key.GetPubKey();
 }
 
-// bool CWallet::AddKey(const CKey& key)
-bool CWallet::AddKey(const CKey& secret, const CPubKey &pubkey)
+bool CWallet::AddKey(const CKey& key)
 {
-   // CPubKey pubkey = key.GetPubKey();
-
-   //   if (!CCryptoKeyStore::AddKey(key))
-    
     AssertLockHeld(cs_wallet); // mapKeyMetadata
+
     CPubKey pubkey = key.GetPubKey();
-    if (!CCryptoKeyStore::AddKeyPubKey(secret, pubkey))
+
+    if (!CCryptoKeyStore::AddKey(key))
         return false;
     if (!fFileBacked)
         return true;
-    // if (!IsCrypted())
-    //     return CWalletDB(strWalletFile).WriteKey(pubkey, key.GetPrivKey(), mapKeyMetadata[pubkey.GetID()]);
     if (!IsCrypted())
         return CWalletDB(strWalletFile).WriteKey(pubkey, key.GetPrivKey(), mapKeyMetadata[pubkey.GetID()]);
-    }
     return true;
 }
 
@@ -119,8 +101,6 @@ bool CWallet::LoadKeyMetadata(const CPubKey &pubkey, const CKeyMetadata &meta)
 
 bool CWallet::LoadCryptedKey(const CPubKey &vchPubKey, const std::vector<unsigned char> &vchCryptedSecret)
 {
-    
-    SetMinVersion(FEATURE_WALLETCRYPT);
     return CCryptoKeyStore::AddCryptedKey(vchPubKey, vchCryptedSecret);
 }
 
@@ -290,13 +270,6 @@ bool CWallet::SetMinVersion(enum WalletFeature nVersion, CWalletDB* pwalletdbIn,
     if (fFileBacked)
     {
         CWalletDB* pwalletdb = pwalletdbIn ? pwalletdbIn : new CWalletDB(strWalletFile);
-        if (nWalletVersion > 40000)
-        {
-            // Versions prior to 0.4.0 did not support the "minversion" record.
-            // Use a CCorruptAddress to make them crash instead.
-            CCorruptAddress corruptAddress;
-            pwalletdb->WriteSetting("addrIncoming", corruptAddress);
-        }
         if (nWalletVersion > 40000)
             pwalletdb->WriteMinVersion(nWalletVersion);
         if (!pwalletdbIn)
@@ -1619,11 +1592,11 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
 
 
 
-bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl)
+bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl)
 {
     vector< pair<CScript, int64_t> > vecSend;
     vecSend.push_back(make_pair(scriptPubKey, nValue));
-
+    /*
     if (sNarr.length() > 0)
     {
         std::vector<uint8_t> vNarr(sNarr.c_str(), sNarr.c_str() + sNarr.length());
@@ -1637,7 +1610,7 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::strin
         
         vecSend.push_back(make_pair(scriptN, 0));
     }
-
+    */
     // -- CreateTransaction won't place change between value and narr output.
     //    narration output will be for preceding output
     
@@ -2695,7 +2668,7 @@ bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey)
 
 
 
-string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee)
+string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, CWalletTx& wtxNew, bool fAskFee)
 {
     CReserveKey reservekey(this);
     int64_t nFeeRequired;
@@ -2712,7 +2685,7 @@ string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNa
         printf("SendMoney() : %s", strError.c_str());
         return strError;
     }
-    if (!CreateTransaction(scriptPubKey, nValue, sNarr, wtxNew, reservekey, nFeeRequired))
+    if (!CreateTransaction(scriptPubKey, nValue, wtxNew, reservekey, nFeeRequired))
     {
         string strError;
         if (nValue + nFeeRequired > GetBalance())
@@ -2734,7 +2707,7 @@ string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNa
 
 
 
-string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee)
+string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nValue, CWalletTx& wtxNew, bool fAskFee)
 {
     // Check amount
     if (nValue <= 0)
@@ -2742,14 +2715,11 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nV
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
     
-    if (sNarr.length() > 24)
-        return _("Narration must be 24 characters or less.");
-
     // Parse Bitcoin address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 
-    return SendMoney(scriptPubKey, nValue, sNarr, wtxNew, fAskFee);
+    return SendMoney(scriptPubKey, nValue, wtxNew, fAskFee);
 }
 
 
@@ -3190,7 +3160,7 @@ void CWallet::FixSpentCoins(int& nMismatchFound, int64_t& nBalanceInQuestion, bo
         {
             if (IsMine(pcoin->vout[n]) && pcoin->IsSpent(n) && (txindex.vSpent.size() <= n || txindex.vSpent[n].IsNull()))
             {
-                printf("FixSpentCoins found lost coin %s VADE %s[%d], %s\n",
+                printf("FixSpentCoins found lost coin %s CORG %s[%d], %s\n",
                     FormatMoney(pcoin->vout[n].nValue).c_str(), pcoin->GetHash().ToString().c_str(), n, fCheckOnly? "repair not attempted" : "repairing");
                 nMismatchFound++;
                 nBalanceInQuestion += pcoin->vout[n].nValue;
