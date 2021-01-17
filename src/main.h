@@ -598,7 +598,6 @@ public:
         return true;
     }
 
-
     friend bool operator==(const CTransaction& a, const CTransaction& b)
     {
         return (a.nVersion  == b.nVersion &&
