@@ -1227,7 +1227,7 @@ void ThreadMapPort()
             MilliSleep(2000);
             i++;
         }
-    } else {
+     } else {
         printf("No valid UPnP IGDs found\n");
         freeUPNPDevlist(devlist); devlist = 0;
         if (r != 0)
@@ -1241,24 +1241,12 @@ void ThreadMapPort()
     }
 }
 
-void MapPort(bool fUseUPnP)
+void MapPort()
 {
-    static boost::thread* upnp_thread = NULL;
-
-    if (fUseUPnP)
+    if (fUseUPnP && vnThreadsRunning[THREAD_UPNP] < 1)
     {
-        if (upnp_thread) {
-            upnp_thread->interrupt();
-            upnp_thread->join();
-            delete upnp_thread;
-        }
-        upnp_thread = new boost::thread(boost::bind(&TraceThread<void (*)()>, "upnp", &ThreadMapPort));
-    }
-    else if (upnp_thread) {
-        upnp_thread->interrupt();
-        upnp_thread->join();
-        delete upnp_thread;
-        upnp_thread = NULL;
+        if (!NewThread(ThreadMapPort, NULL))
+            printf("Error: ThreadMapPort(ThreadMapPort) failed\n");
     }
 }
 #else
