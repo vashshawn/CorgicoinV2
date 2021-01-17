@@ -130,10 +130,7 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
 
     if (!fProofOfStake)
     {
-        // Corgicoin: all PoW blocks are version 2
-        pblock->nVersion = 2;
-        
-        // CReserveKey reservekey(pwallet);
+        CReserveKey reservekey(pwallet);
         CPubKey pubkey;
         if (!reservekey.GetReservedKey(pubkey))
             return NULL;
@@ -147,7 +144,7 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
 
         txNew.vout[0].SetEmpty();
     }
-
+    
     // Add our coinbase tx as first transaction
     pblock->vtx.push_back(txNew);
 
