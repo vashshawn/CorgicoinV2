@@ -1179,7 +1179,7 @@ void ThreadMapPort()
             }
         }
 
-        string strDesc = "Corgicoin " + FormatFullVersion();
+        string strDesc = "corgicoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -1194,45 +1194,59 @@ void ThreadMapPort()
             printf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
                 port.c_str(), port.c_str(), lanaddr, r, strupnperror(r));
         else
-            printf("UPnP Port Mapping successful.\n");;
-
-                MilliSleep(20*60*1000); // Refresh every 20 minutes
-            }
-        }
-        catch (boost::thread_interrupted)
+            printf("UPnP Port Mapping successful.\n");
+        int i = 1;
+        while (true)
         {
+            if (fShutdown || !fUseUPnP)
+            {
                 r = UPNP_DeletePortMapping(urls.controlURL, data.first.servicetype, port.c_str(), "TCP", 0);
                 printf("UPNP_DeletePortMapping() returned : %d\n", r);
                 freeUPNPDevlist(devlist); devlist = 0;
                 FreeUPNPUrls(&urls);
-                 throw;
+                return;
+            }
+            if (i % 600 == 0) // Refresh every 20 minutes
+            {
+#ifndef UPNPDISCOVER_SUCCESS
+                /* miniupnpc 1.5 */
+                r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+                                    port.c_str(), port.c_str(), lanaddr, strDesc.c_str(), "TCP", 0);
+#else
+                /* miniupnpc 1.6 */
+                r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
+                                    port.c_str(), port.c_str(), lanaddr, strDesc.c_str(), "TCP", 0, "0");
+#endif
+
+                if(r!=UPNPCOMMAND_SUCCESS)
+                    printf("AddPortMapping(%s, %s, %s) failed with code %d (%s)\n",
+                        port.c_str(), port.c_str(), lanaddr, r, strupnperror(r));
+                else
+                    printf("UPnP Port Mapping successful.\n");;
+            }
+            MilliSleep(2000);
+            i++;
         }
-    } else {
+     } else {
         printf("No valid UPnP IGDs found\n");
         freeUPNPDevlist(devlist); devlist = 0;
         if (r != 0)
             FreeUPNPUrls(&urls);
+        while (true)
+        {
+            if (fShutdown || !fUseUPnP)
+                return;
+            MilliSleep(2000);
+        }
     }
 }
 
-void MapPort(bool fUseUPnP)
+void MapPort()
 {
-    static boost::thread* upnp_thread = NULL;
-
-    if (fUseUPnP)
+    if (fUseUPnP && vnThreadsRunning[THREAD_UPNP] < 1)
     {
-        if (upnp_thread) {
-            upnp_thread->interrupt();
-            upnp_thread->join();
-            delete upnp_thread;
-        }
-        upnp_thread = new boost::thread(boost::bind(&TraceThread<void (*)()>, "upnp", &ThreadMapPort));
-    }
-    else if (upnp_thread) {
-        upnp_thread->interrupt();
-        upnp_thread->join();
-        delete upnp_thread;
-        upnp_thread = NULL;
+        if (!NewThread(ThreadMapPort, NULL))
+            printf("Error: ThreadMapPort(ThreadMapPort) failed\n");
     }
 }
 #else
