@@ -1592,11 +1592,11 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
 
 
 
-bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl)
+bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64_t& nFeeRet, const CCoinControl* coinControl)
 {
     vector< pair<CScript, int64_t> > vecSend;
     vecSend.push_back(make_pair(scriptPubKey, nValue));
-    /*
+
     if (sNarr.length() > 0)
     {
         std::vector<uint8_t> vNarr(sNarr.c_str(), sNarr.c_str() + sNarr.length());
@@ -1610,7 +1610,7 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, CWalletTx&
         
         vecSend.push_back(make_pair(scriptN, 0));
     }
-    */
+
     // -- CreateTransaction won't place change between value and narr output.
     //    narration output will be for preceding output
     
@@ -2685,7 +2685,7 @@ string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNa
         printf("SendMoney() : %s", strError.c_str());
         return strError;
     }
-    if (!CreateTransaction(scriptPubKey, nValue, wtxNew, reservekey, nFeeRequired))
+    if (!CreateTransaction(scriptPubKey, nValue, sNarr, wtxNew, reservekey, nFeeRequired))
     {
         string strError;
         if (nValue + nFeeRequired > GetBalance())
@@ -2715,11 +2715,14 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64_t nV
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
     
+    if (sNarr.length() > 24)
+        return _("Narration must be 24 characters or less.");
+
     // Parse Bitcoin address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 
-    return SendMoney(scriptPubKey, nValue, wtxNew, fAskFee);
+    return SendMoney(scriptPubKey, nValue, sNarr, wtxNew, fAskFee);
 }
 
 
