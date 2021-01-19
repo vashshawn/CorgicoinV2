@@ -81,7 +81,7 @@ OBJS= \
     obj/scrypt-x86.o \
     obj/scrypt-x86_64.o
 
-all: VADEd.exe
+all: Corgicoind.exe
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -107,7 +107,7 @@ VADEd.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-del /Q VADEd.exe
+	-del /Q Corgicoind.exe
 	-del /Q obj\*
 	-del /Q obj\zerocoin\*
 
