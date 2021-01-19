@@ -5,18 +5,18 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About VADE</source>
-        <translation>About VADE</translation>
+        <source>About Corgicoin</source>
+        <translation>About Corgicoin</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;VADE&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;VADE&lt;/b&gt; version</translation>
+        <source>&lt;b&gt;Corgicoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Corgicoin&lt;/b&gt; version</translation>
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright (c) 2017 VADE Developers
-Copyright (c) 2014-2017 Corgicoin Developers
+        <source>Copyright (c) 2021 Corgicoin Developers
+Copyright (c) 2014 Audiocoin Developers
 Copyright (c) 2014 BlackCoin Developers
 Copyright (c) 2013-2014 NovaCoin Developers
 Copyright (c) 2011-2012 PPCoin Developers
@@ -68,8 +68,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-46"/>
-        <source>These are your VADE addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>These are your VADE addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</translation>
+        <source>These are your Corgicoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>These are your Corgicoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -83,8 +83,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a VADE address</source>
-        <translation>Sign a message to prove you own a VADE address</translation>
+        <source>Sign a message to prove you own a Corgicoin address</source>
+        <translation>Sign a message to prove you own a Corgicoin address</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -433,13 +433,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-62"/>
-        <source>Send coins to a VADE address</source>
-        <translation>Send coins to a VADE address</translation>
+        <source>Send coins to a Corgicoin address</source>
+        <translation>Send coins to a Corgicoin address</translation>
     </message>
     <message>
         <location line="+45"/>
-        <source>Modify configuration options for VADE</source>
-        <translation>Modify configuration options for VADE</translation>
+        <source>Modify configuration options for Corgicoin</source>
+        <translation>Modify configuration options for Corgicoin</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -488,8 +488,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+178"/>
-        <source>&amp;About VADE</source>
-        <translation>&amp;About VADE</translation>
+        <source>&amp;About Corgicoin</source>
+        <translation>&amp;About Corgicoin</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -546,14 +546,14 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="+0"/>
         <location line="+60"/>
         <source>VADE client</source>
-        <translation>VADE client</translation>
+        <translation>Corgicoin client</translation>
     </message>
     <message numerus="yes">
         <location line="+70"/>
-        <source>%n active connection(s) to VADE network</source>
+        <source>%n active connection(s) to Corgicoin network</source>
         <translation>
-            <numerusform>%n active connection to VADE network</numerusform>
-            <numerusform>%n active connections to VADE network</numerusform>
+            <numerusform>%n active connection to Corgicoin network</numerusform>
+            <numerusform>%n active connections to Corgicoin network</numerusform>
         </translation>
     </message>
     <message>
@@ -752,8 +752,8 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
-        <source>A fatal error occurred. VADE can no longer continue safely and will quit.</source>
-        <translation>A fatal error occurred. VADE can no longer continue safely and will quit.</translation>
+        <source>A fatal error occurred. Corgicoin can no longer continue safely and will quit.</source>
+        <translation>A fatal error occurred. Corgicoin can no longer continue safely and will quit.</translation>
     </message>
 </context>
 <context>
@@ -1091,8 +1091,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>VADE-Qt</source>
-        <translation>VADE-Qt</translation>
+        <source>Corgicoin-Qt</source>
+        <translation>Corgicoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1164,13 +1164,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start VADE after logging in to the system.</source>
-        <translation>Automatically start VADE after logging in to the system.</translation>
+        <source>Automatically start Corgicoin after logging in to the system.</source>
+        <translation>Automatically start Corgicoin after logging in to the system.</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start VADE on system login</source>
-        <translation>&amp;Start VADE on system login</translation>
+        <source>&amp;Start Corgicoin on system login</source>
+        <translation>&amp;Start Corgicoin on system login</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1189,8 +1189,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the VADE client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatically open the VADE client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
+        <source>Automatically open the Corgicoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatically open the Corgicoin client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1355,8 +1355,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+33"/>
         <location line="+231"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the VADE network after a connection is established, but this process has not completed yet.</source>
-        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the VADE network after a connection is established, but this process has not completed yet.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Corgicoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>The displayed information may be out of date. Your wallet automatically synchronizes with the Corgicoin network after a connection is established, but this process has not completed yet.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1606,8 +1606,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the VADE debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Open the VADE debug log file from the current data directory. This can take a few seconds for large log files.</translation>
+        <source>Open the Corgicoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <translation>Open the Corgicoin debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1775,8 +1775,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1875,7 +1875,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+251"/>
-        <source>WARNING: Invalid VADE address</source>
+        <source>WARNING: Invalid Corgicoin address</source>
         <translation></translation>
     </message>
     <message>
@@ -1949,8 +1949,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <source>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
+        <translation>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
 </context>
 <context>
@@ -2054,7 +2054,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
         <source>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</source>
-        <translation>Enter a VADE address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
+        <translation>Enter a Corgicoin address (e.g. SXywGBZBowrppUwwNUo1GCRDTibzJi7g2M)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2646,8 +2646,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
-        <source>VADE version</source>
-        <translation>VADE version</translation>
+        <source>Corgicoin version</source>
+        <translation>Corgicoin version</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2656,8 +2656,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+1"/>
-        <source>Send command to -server or VADEd</source>
-        <translation>Send command to -server or VADEd</translation>
+        <source>Send command to -server or Corgicoind</source>
+        <translation>Send command to -server or Corgicoind</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2676,13 +2676,13 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+2"/>
-        <source>Specify configuration file (default: VADE.conf)</source>
+        <source>Specify configuration file (default: corgicoin.conf)</source>
         <translation>Specify configuration file (default: VADE.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Specify pid file (default: VADEd.pid)</source>
-        <translation>Specify pid file (default: VADEd.pid)</translation>
+        <source>Specify pid file (default: Corgicoind.pid)</source>
+        <translation>Specify pid file (default: Corgicoind.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2706,8 +2706,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+6"/>
-        <source>Listen for connections on &lt;port&gt; (default: 51737 or testnet: 51997)</source>
-        <translation>Listen for connections on &lt;port&gt; (default: 51737 or testnet: 51997)</translation>
+        <source>Listen for connections on &lt;port&gt; (default: 29092 or testnet: 51997)</source>
+        <translation>Listen for connections on &lt;port&gt; (default: 29092 or testnet: 51997)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3020,7 +3020,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>%s, you must set a rpcpassword in the configuration file:
  %s
 It is recommended you use the following random password:
-rpcuser=VADErpc
+rpcuser=Corgicoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
@@ -3152,8 +3152,8 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+1"/>
-        <source>Cannot obtain a lock on data directory %s.  VADE is probably already running.</source>
-        <translation>Cannot obtain a lock on data directory %s.  VADE is probably already running.</translation>
+        <source>Cannot obtain a lock on data directory %s.  Corgicoin is probably already running.</source>
+        <translation>Cannot obtain a lock on data directory %s.  Corgicoin is probably already running.</translation>
     </message>
     <message>
         <location line="-98"/>
@@ -3267,8 +3267,8 @@ for example: alertnotify=echo %%s | mail -s &quot;VADE Alert&quot; admin@foo.com
     </message>
     <message>
         <location line="+122"/>
-        <source>Unable to bind to %s on this computer. VADE is probably already running.</source>
-        <translation>Unable to bind to %s on this computer. VADE is probably already running.</translation>
+        <source>Unable to bind to %s on this computer. Corgicoin is probably already running.</source>
+        <translation>Unable to bind to %s on this computer. Corgicoin is probably already running.</translation>
     </message>
     <message>
         <location line="-97"/>
