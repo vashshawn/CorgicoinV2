@@ -1427,6 +1427,7 @@ void static ProcessOneShot()
     }
 }
 
+// ppcoin: stake minter thread
 void static ThreadStakeMiner(void* parg)
 {
     printf("ThreadStakeMiner started\n");
