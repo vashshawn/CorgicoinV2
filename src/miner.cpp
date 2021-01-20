@@ -529,8 +529,7 @@ bool CheckStake(CBlock* pblock, CWallet& wallet)
     return true;
 }
 
-StakeMiner(CWallet *pwallet)
-/void ThreadStakeMiner(CWallet *pwallet)
+void ThreadStakeMiner(CWallet *pwallet)
 {
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
