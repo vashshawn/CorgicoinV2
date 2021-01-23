@@ -369,7 +369,7 @@ string HTTPPost(const string& strMsg, const map<string,string>& mapRequestHeader
 {
     ostringstream s;
     s << "POST / HTTP/1.1\r\n"
-      << "User-Agent: VADE-json-rpc/" << FormatFullVersion() << "\r\n"
+      << "User-Agent: Corgicoin-json-rpc/" << FormatFullVersion() << "\r\n"
       << "Host: 127.0.0.1\r\n"
       << "Content-Type: application/json\r\n"
       << "Content-Length: " << strMsg.size() << "\r\n"
@@ -698,7 +698,7 @@ private:
 void ThreadRPCServer(void* parg)
 {
     // Make this thread recognisable as the RPC listener
-    RenameThread("VADE-rpclist");
+    RenameThread("Corgicoin-rpclist");
 
     try
     {
@@ -1002,7 +1002,7 @@ static CCriticalSection cs_THREAD_RPCHANDLER;
 void ThreadRPCServer3(void* parg)
 {
     // Make this thread recognisable as the RPC handler
-    RenameThread("VADE-rpchand");
+    RenameThread("Corgicoin-rpchand");
 
     {
         LOCK(cs_THREAD_RPCHANDLER);
