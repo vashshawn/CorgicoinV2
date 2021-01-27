@@ -37,8 +37,8 @@ LIBS += \
  $(DEPSDIR)/opt/boost@1.55/lib/libboost_filesystem-mt.a \
  $(DEPSDIR)/opt/boost@1.55/lib/libboost_program_options-mt.a \
  $(DEPSDIR)/opt/boost@1.55/lib/libboost_thread-mt.a \
- $(DEPSDIR)/Cellar/openssl/1.0.2n/lib/libssl.a \
- $(DEPSDIR)/Cellar/openssl/1.0.2n/lib/libcrypto.a \
+ $(DEPSDIR)/Cellar/openssl/1.1./lib/libssl.a \
+ $(DEPSDIR)/Cellar/openssl/1.1.1/lib/libcrypto.a \
  -lz
 else
 LIBS += \
