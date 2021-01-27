@@ -90,7 +90,7 @@ OBJS= \
     obj/scrypt-x86.o \
     obj/scrypt-x86_64.o
 
-all: VADEd.exe
+all: Corgicoind.exe
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += -I"$(CURDIR)/leveldb/include"
@@ -124,8 +124,8 @@ obj/scrypt-x86_64.o: scrypt-x86_64.S
 clean:
 	-rm -f obj/*.o
 	-rm -f obj/zerocoin/*.o
-	-rm -f test_VADE.exe
-	-rm -f VADEd.exe
+	-rm -f test_Corgicoin.exe
+	-rm -f Corgicoind.exe
 	-rm -f obj/build.h
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 
