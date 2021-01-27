@@ -37,8 +37,8 @@ LIBS += \
  $(DEPSDIR)/opt/boost@1.55/lib/libboost_filesystem-mt.a \
  $(DEPSDIR)/opt/boost@1.55/lib/libboost_program_options-mt.a \
  $(DEPSDIR)/opt/boost@1.55/lib/libboost_thread-mt.a \
- $(DEPSDIR)/Cellar/openssl/1.0.2n/lib/libssl.a \
- $(DEPSDIR)/Cellar/openssl/1.0.2n/lib/libcrypto.a \
+ $(DEPSDIR)/Cellar/openssl/1.1./lib/libssl.a \
+ $(DEPSDIR)/Cellar/openssl/1.1.1/lib/libcrypto.a \
  -lz
 else
 LIBS += \
@@ -113,7 +113,7 @@ else
 endif
 endif
 
-all: VADEd
+all: Corgicoind
 
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
@@ -144,11 +144,11 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-VADEd: $(OBJS:obj/%=obj/%)
+Corgicoind: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 clean:
-	-rm -f VADEd
+	-rm -f Corgicoind
 	-rm -f obj/*.o
 	-rm -f obj/*.P
 	-rm -f obj/build.h
