@@ -9,7 +9,7 @@ src/test_Corgicoin
 *.orig
 *.o
 *.patch
-.VADE
+.Corgicoin
 
 # Compilation and Qt preprocessor part
 *.qm
