@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 4.0.0.0
+!define VERSION 4.0.0
 !define COMPANY "Corgicoin"
 
 # MUI Symbol Definitions
@@ -50,7 +50,7 @@ CRCCheck on
 XPStyle on
 BrandingText " "
 ShowInstDetails show
-VIProductVersion 4.0.0.0
+VIProductVersion 4.0.0
 VIAddVersionKey ProductName Corgicoin
 VIAddVersionKey ProductVersion "${VERSION}"
 VIAddVersionKey CompanyName "${COMPANY}"
