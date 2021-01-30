@@ -349,7 +349,7 @@ void BitcoinGUI::createActions()
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Corgicoin"), this);
-    aboutAction->setToolTip(tr("Show information about VADE"));
+    aboutAction->setToolTip(tr("Show information about Corgicoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
     aboutQtAction->setToolTip(tr("Show information about Qt"));
@@ -471,7 +471,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("VADE client") + QString(" ") + tr("[testnet]"));
+                trayIcon->setToolTip(tr("Corgicoin client") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -964,21 +964,21 @@ void BitcoinGUI::handleURI(QString strURI)
         gotoSendCoinsPage();
     }
     else
-        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid VADE address or malformed URI parameters."));
+        notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid Corgicoin address or malformed URI parameters."));
 }
 
 void BitcoinGUI::mainToolbarOrientation(Qt::Orientation orientation)
 {
     if(orientation == Qt::Horizontal)
     {
-        mainIcon->setPixmap(QPixmap(":images/VADE_SPLASH"));
+        mainIcon->setPixmap(QPixmap(":images/corgicoin_splash"));
         mainIcon->show();
         mainToolbar->setStyleSheet(HORIZONTAL_TOOLBAR_STYLESHEET);
         messageAction->setIconText(tr("&Messages"));
     }
     else
     {
-        mainIcon->setPixmap(QPixmap(":images/VADE"));
+        mainIcon->setPixmap(QPixmap(":images/Corgicoin"));
         mainIcon->show();
 
         mainToolbar->setStyleSheet(VERTICAL_TOOBAR_STYLESHEET);
