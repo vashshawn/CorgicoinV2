@@ -978,7 +978,7 @@ void BitcoinGUI::mainToolbarOrientation(Qt::Orientation orientation)
     }
     else
     {
-        mainIcon->setPixmap(QPixmap(":images/Corgicoin"));
+        mainIcon->setPixmap(QPixmap(":images/corgicoin"));
         mainIcon->show();
 
         mainToolbar->setStyleSheet(VERTICAL_TOOBAR_STYLESHEET);
