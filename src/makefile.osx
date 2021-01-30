@@ -84,18 +84,21 @@ OBJS= \
     obj/rpcwallet.o \
     obj/rpcblockchain.o \
     obj/rpcrawtransaction.o \
+    obj/rpcsmessage.o \
     obj/script.o \
     obj/sync.o \
     obj/util.o \
     obj/wallet.o \
     obj/walletdb.o \
     obj/noui.o \
-    obj/pbkdf2.o \
     obj/kernel.o \
+    obj/pbkdf2.o \
     obj/scrypt.o \
     obj/scrypt-x86.o \
-    obj/scrypt-x86_64.o
-
+    obj/scrypt-x86_64.o \
+    obj/smessage.o \
+    obj/stealth.o
+    
 ifndef USE_UPNP
 	override USE_UPNP = -
 endif
