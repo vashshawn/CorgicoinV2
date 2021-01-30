@@ -113,7 +113,7 @@ obj/zerocoin/%.o: zerocoin/%.cpp $(HEADERS)
 
 Corgicoind.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
-	$(STRIP) VADEd.exe
+	$(STRIP) Corgicoind.exe
 
 obj/scrypt-x86.o: scrypt-x86.S
 	$(CXX) -c $(CFLAGS) -MMD -o $@ $<
