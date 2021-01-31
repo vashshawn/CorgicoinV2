@@ -2423,9 +2423,9 @@ bool LoadBlockIndex(bool fAllowNew)
 
         // Genesis block
 
-        const char* pszTimestamp = "The NewCorgi is here - Corgi V2";
+         const char* pszTimestamp = "Corgicoin Hybrid";
         CTransaction txNew;
-        txNew.nTime = 1452724296;
+        txNew.nTime = 1612240182;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2436,9 +2436,9 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1452724296;
+        block.nTime    = 1612240182;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 133744;
+        block.nNonce   = 144722;
 
         if (false && (block.GetHash() != hashGenesisBlock)) {
             // This will figure out a valid hash and Nonce if you're
